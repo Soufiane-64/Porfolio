@@ -1,20 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-html{
+html {
   font-family: "Roboto", sans-serif;
+  letter-spacing: 0.1px;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-
 :root {
   --primary: #000;
   --secondary: rgb(24 24 27);
-  --boder: rgba(63, 63, 70, 0.4);
+  --border: rgba(63, 63, 70, 0.4);
+  --title: rgb(244, 244, 245);
+  --subtitle: rgb(161, 161, 170);
+  --bgHeader: rgb(39, 39, 42);
+  --blue: rgb(93, 188, 252);
 }
 .light {
   --primary: #fff;
@@ -26,7 +29,7 @@ body {
 }
 
 .container {
-  border: 2px solid var(--boder);
+  border: 2px solid var(--border);
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -34,6 +37,35 @@ body {
 }
 
 .divider {
-  border-bottom: 1px solid var(--boder);
+  border-bottom: 1px solid var(--border);
   margin: 3rem 0;
+}
+
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: initial;
+  transition: 0.2s;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.border {
+  border: 2px solid red;
+}
+
+button {
+  all: unset;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  scale: 0.9;
 }

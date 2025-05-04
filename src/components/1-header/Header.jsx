@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './header.css';
 
 /**
@@ -7,46 +7,64 @@ import './header.css';
  * and a light/dark mode toggle
  */
 const Header = () => {
-  const [lightMode, setLightMode] = useState(false),
-    // Toggle between light and dark mode
-    toggleTheme = () => {
-      setLightMode(!lightMode);
-      document.body.classList.toggle('light');
-      // @ts-ignore
-      localStorage.setItem('lightMode', !lightMode);
-    };
-
-  // Check for saved user preference on component mount
-  useEffect(() => {
-    const savedLightMode = localStorage.getItem('lightMode') === 'true';
-    setLightMode(savedLightMode);
-    if (savedLightMode) {
-      document.body.classList.add('light');
-    }
-  }, []);
-
+  const [showModal, setshowModal] = useState(false);
   return (
-    <header className="header">
-      <div className="logo">
-        <h1>Portfolio</h1>
-      </div>
-
-      <nav className="navbar">
-        <ul className="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Articles & Projects</a></li>
-          <li><a href="#speaking">Speaking</a></li>
-          <li><a href="#contact">Contact</a></li>
+    <header className="flex">
+      <button
+        onClick={() => {
+          setshowModal(true);
+        }} className="menu icon-menu flex"/>
+      <div />
+      <nav>
+        <ul className="flex">
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#articles">Articles</a>
+          </li>
+          <li>
+            <a href="#projects">Projects</a>
+          </li>
+          <li>
+            <a href="#speaking">Speaking</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
         </ul>
-
-        <button
-          className={`theme-toggle ${lightMode ? 'light-mode' : 'dark-mode'}`} 
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
-        >
-          {lightMode ? '🌙' : '☀️'}
-        </button>
       </nav>
+
+      <button className='mode flex'>
+        <span className='icon-moon-o'></span>
+      </button>
+
+      {showModal && (
+        <div className="fixed">
+          <ul className="modal">
+            <li className="border">
+              <button className='icon-close' onClick={() => {
+                setshowModal(false);
+              }}/>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#articles">Articles</a>
+            </li>
+            <li>
+              <a href="#projects">Projects</a>
+            </li>
+            <li>
+              <a href="#speaking">Speaking</a>
+            </li>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 };
