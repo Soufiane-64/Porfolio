@@ -13,7 +13,9 @@ const Header = () => {
       <button
         onClick={() => {
           setshowModal(true);
-        }} className="menu icon-menu flex"/>
+        }}
+        className="menu icon-menu flex"
+      />
       <div />
       <nav>
         <ul className="flex">
@@ -35,17 +37,20 @@ const Header = () => {
         </ul>
       </nav>
 
-      <button className='mode flex'>
-        <span className='icon-moon-o'></span>
+      <button className="mode flex">
+        <span className="icon-moon-o"></span>
       </button>
 
       {showModal && (
         <div className="fixed">
           <ul className="modal">
             <li className="border">
-              <button className='icon-close' onClick={() => {
-                setshowModal(false);
-              }}/>
+              <button
+                className="icon-close"
+                onClick={() => {
+                  setshowModal(false);
+                }}
+              />
             </li>
             <li>
               <a href="#about">About</a>
