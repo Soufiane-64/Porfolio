@@ -62,7 +62,6 @@ export default [
       'comma-spacing': ['error', { before: false, after: true }],
       'key-spacing': ['error', { mode: 'strict' }],
       'no-multi-spaces': 'error',
-      quotes: ['error', 'single'],
       eqeqeq: 'error',
       'linebreak-style': ['error', 'unix'],
       'no-whitespace-before-property': 'error',

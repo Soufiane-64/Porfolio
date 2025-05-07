@@ -4,7 +4,7 @@ const Hero = () => {
     <section className="hero flex">
       <div className="left-section">
         <div className="parent-avatar flex">
-          <img src="./picofme.png" className="avatar" alt="" />
+          <img src="./myAvatar.png" className="avatar" alt="" />
           <div className="icon-verified"></div>
         </div>
         <h1 className="title">
@@ -20,7 +20,7 @@ const Hero = () => {
         <div className="all-icons flex">
           <div className="icon icon-x"></div>
           <div className="icon icon-instagram"></div>
-          <div className="icon icon-linkedin"></div>
+          <div className="icon icon-linkedin" ></div>
           <div className="icon icon-github"></div>
           <div className="icon icon-facebook2"></div>
         </div>
