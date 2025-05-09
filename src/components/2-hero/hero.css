@@ -59,11 +59,14 @@ section.hero .all-icons {
   color: var(--subtitle);
 }
 
+section.hero .all-icons .icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
 section.hero .all-icons .icon:hover {
-  font-size: 1.3rem;
-  transition: 0.3s;
-  cursor: pointer;
+  transform: scale(1.2);
   color: var(--icon-hover);
+  cursor: pointer;
 }
 
 /*================================

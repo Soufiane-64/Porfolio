@@ -49,37 +49,44 @@ header button.menu {
 }
 
 /*==================
-  2 - IconButton
+  2 - IconButton (shared style)
 ====================*/
-header .icon-menu,
-header button.mode {
+header .icon-button {
   background-color: var(--bgHeader);
   justify-content: center;
+  align-items: center;
   text-align: center;
+  display: flex;
   border-radius: 50%;
   height: 2.4rem;
   width: 2.4rem;
   color: var(--subtitle);
   border: 1px solid rgba(244, 165, 96, 0.249);
-  transition: 0.2s;
+  transition: 0.2s ease;
+  font-size: 1.2rem;
 }
 
-header .icon-menu:hover,
-header button.mode:hover {
+header .icon-button:hover {
   color: var(--title);
   border: 1px solid rgb(244, 165, 96);
+  cursor: pointer;
 }
 
+/*==================
+  2.1 - Close Icon
+====================*/
 header .icon-close {
   font-size: 1.3rem;
   color: var(--subtitle);
-  transition: 0.3s;
+  background: none;
+  border: none;
+  transition: 0.3s ease;
 }
 
 header .icon-close:hover {
-  font-size: 1.7rem;
+  transform: rotate(180deg) scale(1.3);
   color: crimson;
-  rotate: 180deg;
+  cursor: pointer;
 }
 
 /*====================

@@ -21,20 +21,18 @@ const Main = () => {
                 La description de projet, dans une paragraph
               </p>
 
-              <div className="flex icons">
-                <div style={{ gap: "11px" }} className="flex">
-                  <div className="icon-link"></div>
-                  <div className="icon-github"></div>
+              <div className="card-footer flex space-between">
+                <div className="icon-group flex">
+                  <i className="fa-solid fa-link icon" title="Live site"></i>
+                  <i className="fa-brands fa-github icon" title="GitHub"></i>
                 </div>
 
-                <a className="link flex" href="">
-                  more
-                  <span
-                    style={{ alignSelf: "end" }}
-                    className="icon-arrow_forward"
-                  ></span>
+                <a className="more-link flex" href="">
+                  <span>More</span>
+                  <i className="fa-solid fa-arrow-right icon"></i>
                 </a>
               </div>
+
             </div>
           </article>
         ))}

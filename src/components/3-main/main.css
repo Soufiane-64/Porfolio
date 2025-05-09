@@ -95,23 +95,35 @@ main section.right-section.flex {
   justify-content: space-between;
 }
 
-.card .icon-github,
-.card .icon-link {
-  font-size: 1.2rem;
-  color: var(--subtitle);
+.card-footer {
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.card .icon-github:hover,
-.card .icon-link:hover {
-  font-size: 1.25rem;
+.card-footer .icon-group {
+  gap: 10px;
+}
+
+.card-footer .icon {
+  font-size: 1.2rem;
+  color: var(--subtitle);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.card-footer .icon:hover {
+  transform: scale(1.2);
   color: var(--icon-hover);
   cursor: pointer;
 }
 
-.card a.link {
+.more-link {
+  gap: 6px;
   font-size: 0.9rem;
   color: var(--blue);
-  margin-right: 12px;
+  align-items: center;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 /*===============================
