@@ -119,11 +119,12 @@ main section.right-section.flex {
 
 .more-link {
   gap: 6px;
-  font-size: 0.9rem;
-  color: var(--blue);
+  color: var(--subtitle);
   align-items: center;
   text-decoration: none;
   transition: color 0.3s;
+  font-size: 1rem;
+  margin-right: 12px;
 }
 
 /*===============================

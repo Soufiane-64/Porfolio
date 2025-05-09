@@ -28,8 +28,8 @@ const Main = () => {
                 </div>
 
                 <a className="more-link flex" href="">
-                  <span>More</span>
-                  <i className="fa-solid fa-arrow-right icon"></i>
+                  more
+                  <i style={{ alignSelf: "end" }} className="fa-solid fa-arrow-right icon"></i>
                 </a>
               </div>
 
