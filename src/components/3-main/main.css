@@ -105,26 +105,45 @@ main section.right-section.flex {
   gap: 10px;
 }
 
-.card-footer .icon {
+/* Styles for icon group icons only */
+.card-footer .icon-group .icon {
   font-size: 1.2rem;
   color: var(--subtitle);
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.card-footer .icon:hover {
+.card-footer .icon-group .icon:hover {
   transform: scale(1.2);
   color: var(--icon-hover);
   cursor: pointer;
 }
 
+/* More link specific styles */
 .more-link {
   gap: 6px;
-  color: var(--subtitle);
+  color: var(--blue);
   align-items: center;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: transform 0.3s ease;
   font-size: 1rem;
   margin-right: 12px;
+}
+
+/* Apply hover effect to the entire more-link */
+.more-link:hover {
+  transform: translateX(3px);
+  cursor: pointer;
+}
+
+/* Style the icon within more-link */
+.more-link i {
+  color: var(--blue);
+  transition: transform 0.3s ease;
+}
+
+/* Override any scaling behavior for the more-link icon */
+.more-link i:hover {
+  transform: none; /* Prevent individual scaling on the icon */
 }
 
 /*===============================

@@ -1,5 +1,6 @@
 import React from "react";
 import "./main.css";
+
 const Main = () => {
   return (
     <main className="flex">
@@ -12,10 +13,16 @@ const Main = () => {
         <button>Python</button>
       </section>
       <section className="flex right-section">
-        {[...Array(5)].map((index) => (
+        {[...Array(5)].map((_, index) => (
           <article key={index} className="card">
-            <img width={266} src="./1.jpg" alt="" />
-            <div style={{ width: "266px" }} className=" box">
+            <div className="image-container" style={{ width: "266px", height: "200px", overflow: "hidden" }}>
+              <img 
+                style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+                src={`./${index + 1}.jpg`} 
+                alt={`Project ${index + 1}`} 
+              />
+            </div>
+            <div style={{ width: "266px" }} className="box">
               <h1 className="title">Landing Page</h1>
               <p className="sub-title">
                 La description de projet, dans une paragraph
@@ -40,4 +47,5 @@ const Main = () => {
     </main>
   );
 };
+
 export default Main;
