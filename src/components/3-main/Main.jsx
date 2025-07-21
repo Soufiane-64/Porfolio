@@ -17,9 +17,9 @@ const Main = () => {
           <article key={index} className="card">
             <div className="image-container" style={{ width: "266px", height: "200px", overflow: "hidden" }}>
               <img 
-                style={{ width: "100%", height: "100%", objectFit: "cover" }} 
-                src={`./${index + 1}.jpg`} 
-                alt={`Project ${index + 1}`} 
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                src={`./${index + 1}.jpg`}
+                alt={`Project ${index + 1}`}
               />
             </div>
             <div style={{ width: "266px" }} className="box">
