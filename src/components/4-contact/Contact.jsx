@@ -9,7 +9,7 @@ const Contact = () => {
       <p className="sub-title">Feel free to reach out for more information and subscribe to get notified whenever I publish new content.</p>
 
       <div className="flex">
-        <form className="border">
+        <form>
 
           <div className="flex">
             <label htmlFor="email">Email Address:</label>

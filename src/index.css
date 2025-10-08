@@ -3,11 +3,10 @@
 html {
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.1px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-html {
-  box-sizing: border-box;
-}
 
 *,
 *:before,
@@ -101,9 +100,35 @@ button:active {
   }
 }
 
+.scroll2Top{
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(25, 118, 210, 0.85);
+  border-radius: 50%;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll2Top:hover {
+  background-color: rgb(25, 118, 210);
+  transition: 0.3s;
+}
+
 @media (max-width: 600px) {
   .container {
     width: 98%;
     padding: 0 var(--container-padding);
+  }
+  .scroll2Top {
+    opacity: 0.8;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
