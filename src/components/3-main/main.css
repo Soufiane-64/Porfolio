@@ -82,6 +82,7 @@ main section.right-section.flex {
 
 .card .box .title {
   color: var(--title);
+  font-size: 1.2rem;
 }
 
 .card .box .sub-title {
@@ -89,7 +90,16 @@ main section.right-section.flex {
   font-size: 0.8rem;
   margin-top: 0.7rem;
   margin-bottom: 0.8rem;
+  line-height: 1.4;
+  
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines you want to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: calc(1.4em * 2); /* line-height * number of lines */
 }
+
 
 .card .box .icons {
   justify-content: space-between;

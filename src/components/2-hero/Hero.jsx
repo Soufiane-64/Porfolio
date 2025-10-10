@@ -5,7 +5,7 @@ const Hero = () => {
     <section className="hero flex">
       <div className="left-section">
         <div className="parent-avatar flex">
-          <img src="./myAvatar.png" className="avatar" alt="" />
+          <img src="./avatar_white.png" className="avatar" alt="" />
           {/* Verified icon (Font Awesome check-circle) */}
           <i className="fa-solid fa-circle-check icon-verified"></i>
         </div>
@@ -23,11 +23,8 @@ const Hero = () => {
         </p>
 
         <div className="all-icons flex">
-          <i className="fa-brands fa-x-twitter icon"></i>
-          <i className="fa-brands fa-instagram icon"></i>
           <i className="fa-brands fa-linkedin icon"></i>
           <i className="fa-brands fa-github icon"></i>
-          <i className="fa-brands fa-facebook icon"></i>
         </div>
       </div>
 
