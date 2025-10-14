@@ -11,6 +11,12 @@ const Main = () => {
     let isMounted = true;
     const controller = new AbortController();
 
+    /**
+     * Fetch repositories from the GitHub API and update component state.
+     * Uses an AbortController to cancel the request on unmount and guards
+     * against state updates when the component is no longer mounted.
+     * @returns {Promise<void>} Resolves when loading completes.
+     */
     async function loadRepos() {
       try {
         setIsLoading(true);
