@@ -19,7 +19,14 @@ html {
   padding: 0;
 }
 
+*,
+*::before,
+*::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
 :root {
+  /* Dark Mode (Default) */
   --primary: #000;
   --secondary: rgb(24 24 27);
   --border: rgba(63, 63, 70, 0.4);
@@ -32,12 +39,21 @@ html {
 }
 
 .light {
-  --primary: #fff;
+  /* Light Mode */
+  --primary: #ffffff;
+  --secondary: #f8fafc;
+  --border: rgba(148, 163, 184, 0.3);
+  --title: rgb(15, 23, 42);
+  --subtitle: rgb(71, 85, 105);
+  --bgHeader: rgb(248, 250, 252);
+  --blue: rgb(59, 130, 246);
+  --icon-hover: #475569;
 }
 
 body {
   background-color: var(--primary);
-  color: #fff;
+  color: var(--title);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {

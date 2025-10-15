@@ -249,8 +249,8 @@ const Contact = () => {
         <div className="contact-info-section">
           <div className="contact-info">
             <h3>Get In Touch</h3>
-            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
-               Based in Bremen, Germany, but available for remote work worldwide.</p>
+            <p>I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your
+               visions.Based in Bremen, Germany, but available for remote work worldwide.</p>
 
             <div className="contact-details">
               {contactInfo.map((info, index) => (

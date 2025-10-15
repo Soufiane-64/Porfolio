@@ -1,8 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './header.css';
 
 const Header = () => {
   const [showModal, setshowModal] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  // Load theme preference from localStorage on component mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === 'dark');
+      document.documentElement.classList.toggle('light', savedTheme === 'light');
+    } else {
+      // Default to dark mode
+      setIsDarkMode(true);
+      document.documentElement.classList.remove('light');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+
+    // Save to localStorage
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+
+    // Toggle the light class on the document element
+    document.documentElement.classList.toggle('light', !newTheme);
+  };
 
   return (
     <header className="flex">
@@ -28,8 +53,12 @@ const Header = () => {
       </nav>
 
       {/* Dark Mode Toggle */}
-      <button className="icon-button mode flex">
-        <i className="fa-regular fa-moon" />
+      <button
+        className="icon-button mode flex"
+        onClick={toggleTheme}
+        title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+      >
+        <i className={isDarkMode ? 'fa-solid fa-sun' : 'fa-solid fa-moon'} />
       </button>
 
       {/* Modal Menu */}

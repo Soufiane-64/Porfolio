@@ -1,12 +1,33 @@
 // ...existing code...
 import './hero.css';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
 const Hero = () => {
   const rootRef = useRef(null);
   const cardRef = useRef(null);
   const blobsRef = useRef([]);
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  // Check theme on component mount and when theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      const isLightMode = document.documentElement.classList.contains('light');
+      setIsDarkMode(!isLightMode);
+    };
+
+    // Check initial theme
+    checkTheme();
+
+    // Listen for theme changes
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const rootEl = rootRef.current;
@@ -109,7 +130,11 @@ const Hero = () => {
     <section className="hero flex" ref={rootRef}>
       <div className="left-section">
         <div className="parent-avatar flex">
-          <img src="./avatar_black.png" className="avatar" alt="Soufiane Hammagi — avatar" />
+          <img
+            src={isDarkMode ? './avatar_black.png' : './avatar_white.png'}
+            className="avatar"
+            alt="Soufiane Hammagi — avatar"
+          />
           <i className="fa-solid fa-circle-check icon-verified" aria-hidden />
         </div>
 

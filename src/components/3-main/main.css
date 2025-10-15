@@ -21,7 +21,8 @@ main section.left-section.flex {
 }
 
 main section.left-section.flex button {
-  background-color: rgba(36, 37, 46, 1);
+  background-color: var(--secondary);
+  color: var(--title);
   width: 11rem;
   padding: 0.75rem 0;
   text-align: center;
@@ -30,6 +31,7 @@ main section.left-section.flex button {
   opacity: 0.5;
   border-radius: 5px;
   transition: 0.3s;
+  border: 1px solid var(--border);
 }
 
 main section.left-section.flex button:hover {
@@ -37,7 +39,8 @@ main section.left-section.flex button:hover {
 }
 
 main section.left-section.flex button.active {
-  background-color: rgba(36, 37, 46, 1);
+  background-color: var(--secondary);
+  color: var(--title);
   opacity: 1;
   font-weight: bold;
   letter-spacing: 0.6px;
@@ -56,10 +59,11 @@ main section.right-section.flex {
 }
 
 .card {
-  border: 1px solid rgba(93, 188, 252, 0.3);
+  border: 1px solid var(--border);
   transition: 0.3s;
   border-radius: 6px;
-  background-image: linear-gradient(rgba(36, 37, 46, 1), rgba(36, 37, 46, 1));
+  background-color: var(--secondary);
+  color: var(--title);
 }
 
 .card:hover {

@@ -64,10 +64,15 @@ const Footer = () => {
             <div className="footer-brand">
               <h3>Soufiane Hammagi</h3>
               <p>Full-Stack Developer & Software Engineer</p>
-              <p className="footer-description">
-                Passionate about creating innovative solutions and building amazing user experiences.
-                Based in Bremen, Germany, but available for remote work worldwide.
-              </p>
+              <a
+                href="/SoufianeHammagiResume.pdf"
+                download="Soufiane_Hammagi_CV.pdf"
+                className="cv-download-btn"
+                title="Download CV"
+              >
+                <i className="fa-solid fa-download" />
+                Download CV
+              </a>
             </div>
           </div>
 
@@ -115,19 +120,6 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-            <div className="footer-newsletter">
-              <p>Stay updated with my latest projects</p>
-              <div className="newsletter-form">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="newsletter-input"
-                />
-                <button className="newsletter-btn">
-                  <i className="fa-solid fa-paper-plane" />
-                </button>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -135,22 +127,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-bottom-content">
             <div className="footer-copyright">
-              <p>© {currentYear} Soufiane Hammagi. All rights reserved.</p>
-            </div>
-            <div className="footer-legal">
-              <a href="#privacy">Privacy Policy</a>
-              <a href="#terms">Terms of Service</a>
-              <a href="#cookies">Cookie Policy</a>
-            </div>
-          </div>
-          <div className="footer-divider" />
-          <div className="footer-tech">
-            <p>Built with React, GSAP & lots of ☕</p>
-            <div className="tech-stack">
-              <i className="fab fa-react" title="React" />
-              <i className="fab fa-js-square" title="JavaScript" />
-              <i className="fab fa-css3-alt" title="CSS3" />
-              <i className="fab fa-html5" title="HTML5" />
+              <p>© {currentYear} Soufiane Hammagi. All rights reserved. • Built with React & lots of ☕</p>
             </div>
           </div>
         </div>
