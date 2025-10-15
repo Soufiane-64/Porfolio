@@ -1,0 +1,176 @@
+/* Tech Carousel Styles */
+.tech-carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 2rem 0;
+  padding: 1rem 0;
+}
+
+.tech-carousel {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+}
+
+.tech-icon-set {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.tech-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #64748b;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  min-width: 3rem;
+  height: 3rem;
+}
+
+.tech-icon i {
+  font-size: 2.5rem;
+  transition: inherit;
+}
+
+.tech-icon:hover i {
+  color: inherit;
+}
+
+/* Fallback text badges for technologies without Font Awesome icons */
+.tech-badge {
+  background: linear-gradient(135deg, var(--tech-color, #64748b), rgba(100, 116, 139, 0.8));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.tech-icon:hover .tech-badge {
+  background: linear-gradient(135deg, var(--tech-color), var(--tech-color));
+  transform: scale(1.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tech-icon {
+    font-size: 2rem;
+    min-width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .tech-icon i {
+    font-size: 2rem;
+  }
+  
+  .tech-carousel {
+    gap: 2rem;
+  }
+  
+  .tech-icon-set {
+    gap: 2rem;
+  }
+  
+  .tech-badge {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-icon {
+    font-size: 1.8rem;
+    min-width: 2rem;
+    height: 2rem;
+  }
+  
+  .tech-icon i {
+    font-size: 1.8rem;
+  }
+  
+  .tech-carousel {
+    gap: 1.5rem;
+  }
+  
+  .tech-icon-set {
+    gap: 1.5rem;
+  }
+  
+  .tech-badge {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/* Smooth performance optimizations */
+.tech-carousel * {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+/* Ensure smooth scrolling on all devices */
+@media (prefers-reduced-motion: no-preference) {
+  .tech-carousel {
+    animation-timing-function: linear;
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .tech-carousel {
+    animation: none;
+  }
+  
+  .tech-icon {
+    transition: none;
+  }
+}
+
+/* Loading, Error, and Empty States */
+.tech-carousel-loading,
+.tech-carousel-error,
+.tech-carousel-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: var(--subtitle, #94a3b8);
+  font-size: 1.1rem;
+  gap: 1rem;
+}
+
+.tech-carousel-loading i,
+.tech-carousel-error i,
+.tech-carousel-empty i {
+  font-size: 2rem;
+  color: var(--blue, #5dbcfc);
+}
+
+.tech-carousel-error i {
+  color: #ef4444;
+}
+
+.tech-carousel-empty i {
+  color: var(--subtitle, #94a3b8);
+}
+
+.tech-carousel-loading span,
+.tech-carousel-error span,
+.tech-carousel-empty span {
+  font-weight: 500;
+}

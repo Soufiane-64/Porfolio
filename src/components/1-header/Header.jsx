@@ -11,7 +11,7 @@ const Header = () => {
         onClick={() => setshowModal(true)}
         className="icon-button menu flex"
       >
-        <i className="fa-solid fa-bars"></i>
+        <i className="fa-solid fa-bars" />
       </button>
 
       <div />
@@ -29,7 +29,7 @@ const Header = () => {
 
       {/* Dark Mode Toggle */}
       <button className="icon-button mode flex">
-        <i className="fa-regular fa-moon"></i>
+        <i className="fa-regular fa-moon" />
       </button>
 
       {/* Modal Menu */}
@@ -41,7 +41,7 @@ const Header = () => {
                 className="icon-close"
                 onClick={() => setshowModal(false)}
               >
-                <i className="fa-solid fa-xmark"></i>
+                <i className="fa-solid fa-xmark" />
               </button>
             </li>
             <li><a href="#about">About</a></li>

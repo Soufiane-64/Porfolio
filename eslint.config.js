@@ -2,10 +2,10 @@ import js from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import jsdoc from 'eslint-plugin-jsdoc';
+import react from 'eslint-plugin-react';
 
 export default [
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'build', 'node_modules'] },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
@@ -17,77 +17,80 @@ export default [
         sourceType: 'module'
       }
     },
+    settings: {
+      react: {
+        version: 'detect'
+      }
+    },
     plugins: {
+      react,
       'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-      jsdoc: jsdoc
+      'react-refresh': reactRefresh
     },
     rules: {
       ...js.configs.recommended.rules,
+      ...react.configs.recommended.rules,
+      ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
 
-      // JSDoc plugin rules
-      'jsdoc/require-jsdoc': ['error', {
-        require: {
-          FunctionDeclaration: true,
-          MethodDefinition: true,
-          ClassDeclaration: true,
-          ArrowFunctionExpression: false,
-          FunctionExpression: false
-        }
+      // React specific rules
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'warn',
+      'react/jsx-uses-react': 'off',
+      'react/jsx-uses-vars': 'error',
+      'react/jsx-key': 'error',
+      'react/no-unescaped-entities': 'warn',
+      'react/jsx-pascal-case': 'error',
+      'react/self-closing-comp': 'error',
+      'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
+      'react/jsx-wrap-multilines': ['error', {
+        declaration: 'parens-new-line',
+        assignment: 'parens-new-line',
+        return: 'parens-new-line',
+        arrow: 'parens-new-line'
       }],
-      'jsdoc/valid-types': 'error',
 
-      // Style and formatting rules
-      'max-len': 'off',
-      'space-before-function-paren': ['error', 'never'],
-      'switch-colon-spacing': 'off',
-      'comma-dangle': ['error', 'never'],
-      'new-parens': 'error',
-      'no-var': 'off',
-      indent: ['error', 2, { SwitchCase: 1 }],
-      'no-console': 'error',
-      camelcase: 'off',
-      'keyword-spacing': ['error', {
-        overrides: {
-          if: { after: true }
-        }
-      }],
-      'space-infix-ops': ['error', { int32Hint: true }],
-      'quote-props': ['error', 'as-needed', { keywords: false }],
-      'no-trailing-spaces': ['error', { ignoreComments: true, skipBlankLines: false }],
-      'no-multiple-empty-lines': ['error', { max: 2, maxBOF: 1 }],
-      semi: ['error', 'always'],
-      'comma-spacing': ['error', { before: false, after: true }],
-      'key-spacing': ['error', { mode: 'strict' }],
-      'no-multi-spaces': 'error',
-      eqeqeq: 'error',
-      'linebreak-style': ['error', 'unix'],
-      'no-whitespace-before-property': 'error',
-      'array-bracket-spacing': ['error', 'never'],
-      curly: 'error',
-      'vars-on-top': 'error',
-      'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: false }],
-      'no-use-before-define': 'error',
-      'no-unused-vars': ['error', { args: 'none', varsIgnorePattern: '^init' }],
-      'space-before-blocks': 'error',
-      'brace-style': ['error', '1tbs', { allowSingleLine: true }],
-      'block-spacing': ['error', 'always'],
-      'semi-spacing': ['error', { before: false, after: true }],
-      'object-curly-spacing': ['error', 'always', { objectsInObjects: false }],
-      'default-param-last': 'error',
-      'no-loop-func': 'error',
-      'no-extra-bind': 'error',
-      'dot-notation': 'error',
-      'dot-location': ['error', 'property'],
-      'operator-linebreak': ['error', 'before'],
-      'no-undef-init': 'error',
+      // React Hooks rules
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
 
-      // React-refresh rule
+      // React Refresh rule
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true }
-      ]
+      ],
+
+      // General JavaScript rules
+      'no-console': 'warn',
+      'no-unused-vars': ['error', {
+        args: 'none',
+        varsIgnorePattern: '^_',
+        ignoreRestSiblings: true
+      }],
+      'no-var': 'error',
+      'prefer-const': 'error',
+      'prefer-arrow-callback': 'error',
+      'no-use-before-define': ['error', { functions: false, classes: true, variables: true }],
+      eqeqeq: ['error', 'always'],
+
+      // Style and formatting rules
+      indent: ['error', 2, { SwitchCase: 1 }],
+      quotes: ['error', 'single', { avoidEscape: true }],
+      semi: ['error', 'always'],
+      'comma-dangle': ['error', 'never'],
+      'comma-spacing': ['error', { before: false, after: true }],
+      'key-spacing': ['error', { mode: 'strict' }],
+      'object-curly-spacing': ['error', 'always'],
+      'array-bracket-spacing': ['error', 'never'],
+      'space-before-blocks': 'error',
+      'space-before-function-paren': ['error', { anonymous: 'always', named: 'never', asyncArrow: 'always' }],
+      'keyword-spacing': 'error',
+      'space-infix-ops': 'error',
+      'brace-style': ['error', '1tbs', { allowSingleLine: true }],
+      'no-trailing-spaces': 'error',
+      'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
+      'linebreak-style': ['error', 'unix'],
+      'max-len': ['warn', { code: 120, ignoreUrls: true, ignoreStrings: true }]
     }
   }
 ];

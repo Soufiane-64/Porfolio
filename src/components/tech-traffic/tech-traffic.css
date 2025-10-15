@@ -1,0 +1,78 @@
+/* Tech Traffic - marquee style */
+:root{
+  --tt-bg: linear-gradient(180deg, rgba(5,10,20,0.7), rgba(10,15,30,0.85));
+}
+
+.tech-traffic{
+  padding: 2rem 1rem;
+  background: var(--tt-bg);
+  border-radius: 12px;
+  margin: 2rem 0;
+  overflow: hidden;
+}
+
+.tt-title{
+  color: var(--title);
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.tt-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.badge i{
+  display: block;
+  font-size: 2.2rem; /* base size */
+  color: rgba(255,255,255,0.9);
+  opacity: 0.85;
+  filter: grayscale(1) brightness(.85) drop-shadow(0 6px 18px rgba(0,0,0,0.45));
+  transition: transform .28s cubic-bezier(.2,.9,.2,1), color .28s ease, opacity .18s ease, filter .28s ease, background-color .28s ease, box-shadow .28s ease;
+}
+
+.badge i:hover{
+  transform: scale(1.08) rotate(-4deg);
+  color: var(--icon-color, #fff);
+  opacity: 1;
+}
+
+.badge{
+  padding: 6px;
+  border-radius: 8px;
+  background: transparent;
+  transition: background-color .28s ease, box-shadow .28s ease;
+}
+
+.badge:hover{
+  background: var(--icon-bg, rgba(255,255,255,0.04));
+  box-shadow: 0 12px 30px var(--icon-glow, rgba(0,0,0,0.08));
+}
+
+/* Responsive sizes */
+@media (max-width: 600px){
+  .badge i{ font-size: 1.6rem; }
+}
+@media (min-width: 601px){
+  .badge i{ font-size: 2rem; }
+}
+@media (min-width: 1000px){
+  .badge i{ font-size: 2.6rem; }
+}
+
+/* prefer-reduced-motion fallback */
+@media (prefers-reduced-motion: reduce){
+  .lane-content{ transition: none !important; }
+}
+
+/* make single lane stand out */
+.tech-traffic.single .tt-container{ align-items: center; }
+.tech-traffic.single .lane{ padding: 0.6rem 0; }
+.tech-traffic.single .lane-content{ gap: 1.2rem; }
+
+/* center the single lane horizontally */
+.tech-traffic.single .lane{ display:flex; align-items:center; }
+.tech-traffic.single .lane-content{ justify-content:flex-start; }

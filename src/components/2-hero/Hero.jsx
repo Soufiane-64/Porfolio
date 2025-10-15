@@ -1,7 +1,7 @@
 // ...existing code...
-import "./hero.css";
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import './hero.css';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 const Hero = () => {
   const rootRef = useRef(null);
@@ -25,21 +25,21 @@ const Hero = () => {
       gsap.fromTo(
         cardEl,
         { y: 30, opacity: 0, scale: 0.96 },
-        { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" }
+        { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out' }
       );
 
       // stagger screens
-      const screens = cardEl.querySelectorAll(".screen");
+      const screens = cardEl.querySelectorAll('.screen');
       gsap.fromTo(
         screens,
         { y: 18, opacity: 0, scale: 0.9, rotation: -2 },
-        { y: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.7, ease: "back.out(1.3)", stagger: 0.12 }
+        { y: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.7, ease: 'back.out(1.3)', stagger: 0.12 }
       );
       gsap.to(screens, {
-        y: "-=6",
-        rotation: "random(-3,3)",
+        y: '-=6',
+        rotation: 'random(-3,3)',
         duration: 3.6,
-        ease: "sine.inOut",
+        ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
         stagger: { each: 0.18 }
@@ -47,11 +47,11 @@ const Hero = () => {
 
       // blobs
       gsap.to(blobsRef.current, {
-        y: "-=12",
-        x: "random(-10,10)",
-        rotation: "random(-6,6)",
+        y: '-=12',
+        x: 'random(-10,10)',
+        rotation: 'random(-6,6)',
         duration: 3.5,
-        ease: "sine.inOut",
+        ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
         stagger: { each: 0.25 }
@@ -67,11 +67,11 @@ const Hero = () => {
             return;
           }
           const depth = (i + 1) * 8;
-          gsap.to(b, { x: relX * depth, y: relY * depth, duration: 0.6, ease: "power3.out" });
+          gsap.to(b, { x: relX * depth, y: relY * depth, duration: 0.6, ease: 'power3.out' });
         });
       };
 
-      rootEl.addEventListener("mousemove", handleMove);
+      rootEl.addEventListener('mousemove', handleMove);
       moveListener = handleMove;
 
       // card tilt
@@ -81,25 +81,25 @@ const Hero = () => {
         const py = (e.clientY - rect.top) / rect.height;
         const rotateY = (px - 0.5) * 6;
         const rotateX = (0.5 - py) * 6;
-        gsap.to(cardEl, { rotateY, rotateX, duration: 0.4, ease: "power3.out" });
+        gsap.to(cardEl, { rotateY, rotateX, duration: 0.4, ease: 'power3.out' });
       };
-      const resetCard = () => gsap.to(cardEl, { rotateY: 0, rotateX: 0, duration: 0.5, ease: "power3.out" });
+      const resetCard = () => gsap.to(cardEl, { rotateY: 0, rotateX: 0, duration: 0.5, ease: 'power3.out' });
 
-      cardEl.addEventListener("pointermove", handleCardMove);
-      cardEl.addEventListener("pointerleave", resetCard);
+      cardEl.addEventListener('pointermove', handleCardMove);
+      cardEl.addEventListener('pointerleave', resetCard);
       cardMoveListener = handleCardMove;
       cardLeaveListener = resetCard;
     }, rootEl);
 
     return () => {
       if (moveListener) {
-        rootEl.removeEventListener("mousemove", moveListener);
+        rootEl.removeEventListener('mousemove', moveListener);
       }
       if (cardMoveListener) {
-        cardEl.removeEventListener("pointermove", cardMoveListener);
+        cardEl.removeEventListener('pointermove', cardMoveListener);
       }
       if (cardLeaveListener) {
-        cardEl.removeEventListener("pointerleave", cardLeaveListener);
+        cardEl.removeEventListener('pointerleave', cardLeaveListener);
       }
       ctx.revert();
     };
