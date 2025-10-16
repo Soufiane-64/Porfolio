@@ -26,13 +26,13 @@ const Footer = () => {
     {
       name: 'Twitter',
       icon: 'fa-brands fa-twitter',
-      url: 'https://twitter.com/soufiane_dev',
+      url: '/twitter',
       color: '#1DA1F2'
     },
     {
       name: 'Instagram',
       icon: 'fa-brands fa-instagram',
-      url: 'https://instagram.com/soufiane_dev',
+      url: '/instagram',
       color: '#E4405F'
     }
   ];

@@ -62,6 +62,77 @@ section.hero .icon-verified {
   margin-bottom: 0.3rem;
 }
 
+section.hero .avatar:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow: 0 10px 30px rgba(16,24,40,0.12);
+}
+
+/* Avatar transition animation states */
+section.hero .avatar.transitioning {
+  pointer-events: none;
+  filter: brightness(1.1) contrast(1.05);
+}
+
+section.hero .parent-avatar {
+  position: relative;
+  overflow: visible;
+}
+
+/* Subtle glow effect during transition */
+section.hero .parent-avatar::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+section.hero .parent-avatar.transitioning::before {
+  opacity: 1;
+  animation: pulse-glow 1.2s ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+/* React Logo Transition Styles - Lottie Version */
+.react-logo-transition {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.react-logo-transition #lottie-container {
+  width: 100%;
+  height: 100%;
+}
+
+.react-logo-transition svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Enhanced 3D effects for avatar */
 section.hero .avatar {
   width: 160px;
   height: 160px;
@@ -71,11 +142,10 @@ section.hero .avatar {
   padding: 2px;
   box-shadow: 2px 2px 40px rgba(203, 200, 200, 0.12) inset;
   transition: transform 0.45s cubic-bezier(.2,.9,.27,1), box-shadow 0.3s;
-}
-
-section.hero .avatar:hover {
-  transform: translateY(-6px) rotate(-1deg);
-  box-shadow: 0 10px 30px rgba(16,24,40,0.12);
+  /* Enhanced animation properties */
+  transform-origin: center center;
+  will-change: transform, opacity, scale, rotation, rotationX, rotationY;
+  transform-style: preserve-3d;
 }
 
 section.hero h1.title {

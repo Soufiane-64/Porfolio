@@ -139,7 +139,7 @@ section.contact-us .sub-title {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin: 1rem auto 0;
   width: 100%;
   max-width: 300px;
   box-sizing: border-box;

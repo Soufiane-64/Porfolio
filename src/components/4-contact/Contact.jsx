@@ -132,13 +132,13 @@ const Contact = () => {
     {
       icon: 'fa-brands fa-twitter',
       label: 'Twitter',
-      url: 'https://twitter.com/soufiane_dev',
+      url: '/twitter',
       color: '#1DA1F2'
     },
     {
       icon: 'fa-brands fa-instagram',
       label: 'Instagram',
-      url: 'https://instagram.com/soufiane_dev',
+      url: '/instagram',
       color: '#E4405F'
     }
   ];
