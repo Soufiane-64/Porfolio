@@ -25,22 +25,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
   color: #64748b;
   transition: all 0.3s ease;
   cursor: pointer;
   user-select: none;
-  min-width: 3rem;
-  height: 3rem;
+  min-width: 3.5rem;
+  height: 3.5rem;
 }
 
-.tech-icon i {
-  font-size: 2.5rem;
-  transition: inherit;
+.tech-icon-img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 160ms ease;
 }
 
-.tech-icon:hover i {
-  color: inherit;
+.tech-icon:hover .tech-icon-img {
+  transform: scale(1.06);
 }
 
 /* Fallback text badges for technologies without Font Awesome icons */

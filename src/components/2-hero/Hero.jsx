@@ -3,7 +3,6 @@ import './hero.css';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
-import lottie from 'lottie-web';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -13,119 +12,16 @@ const Hero = () => {
   const avatarRef = useRef(null);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
-  // Avatar transition animation with Lottie React logo
-  const animateAvatarTransition = async () => {
+  // Simplified avatar animation: gentle float loop
+  const initSimpleAvatarAnim = () => {
     if (!avatarRef.current) return;
-
-    const avatar = avatarRef.current;
-    const parentAvatar = avatar.parentElement;
-
-    // Add transitioning class
-    avatar.classList.add('transitioning');
-    parentAvatar.classList.add('transitioning');
-
-    // Fetch React logo animation data
-    let reactLogoAnimation;
-    try {
-      const response = await fetch('/react-logo.json');
-      reactLogoAnimation = await response.json();
-    } catch {
-      // Fallback to simple CSS animation if Lottie fails
-      avatar.classList.remove('transitioning');
-      parentAvatar.classList.remove('transitioning');
-      return;
-    }
-
-    // Create Lottie React logo element
-    const reactLogo = document.createElement('div');
-    reactLogo.className = 'react-logo-transition';
-    reactLogo.innerHTML = '<div id="lottie-container"></div>';
-
-    // Insert React logo after avatar
-    parentAvatar.appendChild(reactLogo);
-
-    // Create Lottie animation
-    const lottieContainer = reactLogo.querySelector('#lottie-container');
-    const lottieInstance = lottie.loadAnimation({
-      container: lottieContainer,
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      animationData: reactLogoAnimation,
-      rendererSettings: {
-        preserveAspectRatio: 'xMidYMid slice'
-      }
+    gsap.to(avatarRef.current, {
+      y: -6,
+      duration: 2.4,
+      ease: 'sine.inOut',
+      yoyo: true,
+      repeat: -1
     });
-
-    // Create animation timeline
-    const tl = gsap.timeline({
-      onComplete: () => {
-        // Destroy Lottie animation
-        lottieInstance.destroy();
-        // Remove React logo
-        reactLogo.remove();
-        // Remove transitioning class
-        avatar.classList.remove('transitioning');
-        parentAvatar.classList.remove('transitioning');
-      }
-    });
-
-    // Phase 1: Avatar morphs into React logo (0.6s)
-    tl.to(avatar, {
-      scale: 0.3,
-      rotationY: 180,
-      rotationX: 45,
-      opacity: 0.3,
-      duration: 0.6,
-      ease: 'power2.inOut'
-    })
-      // Phase 2: Lottie React logo appears (0.8s)
-      .fromTo(reactLogo, {
-        scale: 0,
-        rotation: 0,
-        opacity: 0
-      }, {
-        scale: 1,
-        rotation: 360,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'back.out(1.7)'
-      })
-      // Phase 3: React logo spins and scales (0.6s)
-      .to(reactLogo, {
-        rotation: 720,
-        scale: 1.2,
-        duration: 0.6,
-        ease: 'power2.inOut'
-      })
-      // Phase 4: React logo morphs back to avatar (0.6s)
-      .to(reactLogo, {
-        scale: 0,
-        rotation: 1080,
-        opacity: 0,
-        duration: 0.6,
-        ease: 'power2.in'
-      })
-      // Phase 5: New avatar appears with 3D effect (0.8s)
-      .to(avatar, {
-        scale: 1,
-        rotationY: 0,
-        rotationX: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'elastic.out(1, 0.5)'
-      })
-      // Phase 6: Final bounce effect (0.3s)
-      .to(avatar, {
-        scale: 1.05,
-        duration: 0.15,
-        ease: 'power2.out'
-      })
-      .to(avatar, {
-        scale: 1,
-        duration: 0.15,
-        ease: 'elastic.out(1, 0.3)'
-      });
   };
 
   // Check theme on component mount and when theme changes
@@ -133,10 +29,7 @@ const Hero = () => {
     const checkTheme = () => {
       const isLightMode = document.documentElement.classList.contains('light');
       const newIsDarkMode = !isLightMode;
-
-      // Only animate if theme actually changed
       if (newIsDarkMode !== isDarkMode) {
-        animateAvatarTransition();
         setIsDarkMode(newIsDarkMode);
       }
     };
@@ -249,6 +142,11 @@ const Hero = () => {
       }
       ctx.revert();
     };
+  }, []);
+
+  // init simple avatar float once
+  useEffect(() => {
+    initSimpleAvatarAnim();
   }, []);
 
   return (
