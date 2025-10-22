@@ -1,0 +1,206 @@
+{
+  "header": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "projects": "Projekte",
+    "resume": "Lebenslauf",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "greeting": "Hallo, ich bin",
+    "name": "Soufiane Hammagi",
+    "title": "Full-Stack-Entwickler & Software-Ingenieur",
+    "description": "Leidenschaftlich daran interessiert, elegante Lösungen für komplexe Probleme zu entwickeln. Spezialisiert auf moderne Webtechnologien und Cloud-Infrastruktur.",
+    "viewProjects": "Meine Projekte ansehen",
+    "downloadCV": "Lebenslauf herunterladen",
+    "yearsExperience": "Jahre Erfahrung",
+    "projectsCompleted": "Abgeschlossene Projekte",
+    "technologiesMastered": "Beherrschte Technologien"
+  },
+  "projects": {
+    "title": "Projekte",
+    "subtitle": "Eine Auswahl meiner neuesten Arbeiten und Beiträge",
+    "allProjects": "alle Projekte",
+    "htmlCss": "HTML & CSS",
+    "javascript": "JavaScript",
+    "react": "React",
+    "php": "PHP",
+    "python": "Python",
+    "java": "Java",
+    "loading": "Laden...",
+    "fetchingRepos": "Repositories werden abgerufen",
+    "error": "Fehler",
+    "failedToLoad": "Repositories konnten nicht geladen werden.",
+    "noDescription": "Keine Beschreibung verfügbar.",
+    "more": "mehr",
+    "livesite": "Live-Seite",
+    "github": "GitHub"
+  },
+  "resume": {
+    "title": "Lebenslauf",
+    "subtitle": "Mein beruflicher Werdegang, Ausbildung und Fähigkeiten",
+    "experience": "Berufserfahrung",
+    "education": "Ausbildung",
+    "skills": "Fähigkeiten",
+    "languages": "Sprachen",
+    "downloadResume": "Lebenslauf herunterladen (PDF)",
+    "programmingLanguages": "Programmiersprachen",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Datenbanken",
+    "tools": "Werkzeuge",
+    "methodsModeling": "Methoden & Modellierung"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie mich",
+    "subtitle": "Zögern Sie nicht, mich für weitere Informationen zu kontaktieren. Ich bin immer an neuen Möglichkeiten und Kooperationen interessiert.",
+    "form": {
+      "fullName": "Vollständiger Name",
+      "fullNamePlaceholder": "Geben Sie Ihren vollständigen Namen ein",
+      "email": "E-Mail-Adresse",
+      "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
+      "subject": "Betreff",
+      "subjectPlaceholder": "Worum geht es?",
+      "message": "Ihre Nachricht",
+      "messagePlaceholder": "Erzählen Sie mir von Ihrem Projekt oder Ihrer Frage...",
+      "sendMessage": "Nachricht senden",
+      "sending": "Wird gesendet...",
+      "required": "*",
+      "nameRequired": "Name ist erforderlich",
+      "emailRequired": "E-Mail ist erforderlich",
+      "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "subjectRequired": "Betreff ist erforderlich",
+      "messageRequired": "Nachricht ist erforderlich",
+      "messageMinLength": "Die Nachricht muss mindestens 10 Zeichen lang sein",
+      "successTitle": "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.",
+      "errorTitle": "Entschuldigung, beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    },
+    "info": {
+      "getInTouch": "Kontakt aufnehmen",
+      "description": "Ich bin immer offen für Diskussionen über neue Projekte, kreative Ideen oder Möglichkeiten, Teil Ihrer Visionen zu werden. Ansässig in Bremen, Deutschland, aber weltweit für Remote-Arbeit verfügbar.",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "location": "Standort",
+      "linkedin": "LinkedIn",
+      "followMe": "Folgen Sie mir"
+    },
+    "map": {
+      "title": "Finden Sie mich hier",
+      "locationTitle": "Bremen, Deutschland",
+      "locationAddress": "Ansbacher Straße 38, 28215 Bremen",
+      "timezoneTitle": "Zeitzone",
+      "timezoneValue": "GMT+1 (MEZ/MESZ)"
+    }
+  },
+  "footer": {
+    "brand": {
+      "name": "Soufiane Hammagi",
+      "title": "Full-Stack-Entwickler & Software-Ingenieur"
+    },
+    "quickLinks": "Schnelllinks",
+    "contactInfo": "Kontaktinformationen",
+    "followMe": "Folgen Sie mir",
+    "copyright": "Alle Rechte vorbehalten. • Erstellt mit React und viel",
+    "coffee": "☕"
+  },
+  "languageSwitcher": {
+    "selectLanguage": "Sprache auswählen"
+  },
+  "resumeData": {
+    "meta": {
+      "source": "SoufianeHammagiResume (2).pdf",
+      "generated_on": "2025-10-20"
+    },
+    "experience": [
+      {
+        "title": "Ausbildung als Anwendungsentwickler",
+        "company": "EPhilos AG",
+        "location": "Bremen, Deutschland",
+        "start": "2023-08",
+        "end": "2026-07",
+        "highlights": [
+          "Anpassung, Erweiterung und Implementierung von Software-Lösungen für Kunden im Umfeld der ComfortMarket-Produktpalette mit PHP und JavaScript",
+          "Entwicklung und Anpassung von Softwarelösungen mit PHP und JavaScript",
+          "Arbeit mit MySQL und Datenbankmanagementsystemen",
+          "Frontend-Entwicklung mit ExtJS, HTML und CSS",
+          "Installation und Administration von Anwendungsumgebungen",
+          "Analyse von Logfiles und Behebung technischer Fehler",
+          "Implementierung automatisierter Tests zur Qualitätssicherung",
+          "Erstellung technischer Dokumentation"
+        ]
+      },
+      {
+        "title": "Praktikum als Softwareentwickler",
+        "company": "DevSolTech",
+        "location": "Agadir, Marokko",
+        "start": "2021-11",
+        "end": "2022-01",
+        "highlights": [
+          "Entwurf und Pflege von Softwaresystemen",
+          "Erfolgreiche Präsentation von 5 neuen Funktionen vor internen Stakeholdern und Entscheidungsträgern"
+        ]
+      },
+      {
+        "title": "Praktikum als Softwareentwickler",
+        "company": "Unirsone",
+        "location": "Ait Melloul, Marokko",
+        "start": "2021-01",
+        "end": "2021-05",
+        "highlights": [
+          "Entwicklung einer Desktop-Anwendung zur Bestandsverwaltung mit SQL Server, C# und Entity Framework"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor of Science in Computertechnik",
+        "institution": "Fakultät für Natur- und Ingenieurwissenschaften",
+        "location": "Settat, Marokko",
+        "start": "2021-10",
+        "end": "2022-07",
+        "details": "Schwerpunkt: Softwareentwicklung (Java/J2EE); Note: sehr gut"
+      },
+      {
+        "degree": "Diplom-Techniker für Anwendungsentwicklung",
+        "institution": "technical training institute",
+        "location": "Agadir, Marokko",
+        "start": "2019-09",
+        "end": "2021-07",
+        "details": "Original: Diplôme de Technicien Spécialisé en Développement Informatique; Fachrichtung: Softwareentwicklung; Note: gut"
+      },
+      {
+        "degree": "Studium der Mathematischen Wissenschaften und Anwendungen",
+        "institution": "Faculté Ibn Zohr (Universität)",
+        "location": "Agadir, Marokko",
+        "start": "2014-10",
+        "end": "2019-06",
+        "details": "Relevante Module: Analysis, Lineare Algebra, Numerische Mathematik, Statistik"
+      },
+      {
+        "degree": "Abitur in Physik",
+        "institution": "Lycée Moulay Youssef (Gymnasium)",
+        "location": "Ouled Berhil, Marokko",
+        "start": "2013-09",
+        "end": "2014-07",
+        "details": "Note: gut"
+      }
+    ],
+    "languages": [
+      { "name": "Arabisch", "level": "Muttersprache" },
+      { "name": "Deutsch", "level": "fortgeschritten" },
+      { "name": "Englisch", "level": "Fließend" },
+      { "name": "Französisch", "level": "Fließend" },
+      { "name": "Spanisch", "level": "Grundkenntnisse" }
+    ],
+    "skills": {
+      "programming_languages": ["PHP", "JavaScript", "TypeScript", "C#", "Python"],
+      "frontend": ["React", "ExtJS", "Angular", "HTML", "CSS", "Next.js", "Webix", "Tailwind"],
+      "backend": ["Laravel", "Symfony", "Flask", "Jinja"],
+      "databases": ["MySQL", "SQL Server"],
+      "tools": ["Docker", "Git", "GitHub", "SVN", "OpenAI", "VSCode", "Cursor"],
+      "methods": ["Scrum"],
+      "modeling": ["UML"]
+    }
+  }
+}
+

@@ -1,0 +1,206 @@
+{
+  "header": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "resume": "CV",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Bonjour, je suis",
+    "name": "Soufiane Hammagi",
+    "title": "Développeur Full-Stack & Ingénieur Logiciel",
+    "description": "Passionné par la création de solutions élégantes à des problèmes complexes. Spécialisé dans les technologies web modernes et l'infrastructure cloud.",
+    "viewProjects": "Voir mes projets",
+    "downloadCV": "Télécharger le CV",
+    "yearsExperience": "Années d'expérience",
+    "projectsCompleted": "Projets réalisés",
+    "technologiesMastered": "Technologies maîtrisées"
+  },
+  "projects": {
+    "title": "Projets",
+    "subtitle": "Une sélection de mes travaux récents et contributions",
+    "allProjects": "tous les projets",
+    "htmlCss": "HTML & CSS",
+    "javascript": "JavaScript",
+    "react": "React",
+    "php": "PHP",
+    "python": "Python",
+    "java": "Java",
+    "loading": "Chargement...",
+    "fetchingRepos": "Récupération des dépôts",
+    "error": "Erreur",
+    "failedToLoad": "Échec du chargement des dépôts.",
+    "noDescription": "Aucune description fournie.",
+    "more": "plus",
+    "livesite": "Site en direct",
+    "github": "GitHub"
+  },
+  "resume": {
+    "title": "CV",
+    "subtitle": "Mon parcours professionnel, formation et compétences",
+    "experience": "Expérience",
+    "education": "Formation",
+    "skills": "Compétences",
+    "languages": "Langues",
+    "downloadResume": "Télécharger le CV (PDF)",
+    "programmingLanguages": "Langages de programmation",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Bases de données",
+    "tools": "Outils",
+    "methodsModeling": "Méthodes & Modélisation"
+  },
+  "contact": {
+    "title": "Contactez-moi",
+    "subtitle": "N'hésitez pas à me contacter pour plus d'informations. Je suis toujours intéressé par de nouvelles opportunités et collaborations.",
+    "form": {
+      "fullName": "Nom complet",
+      "fullNamePlaceholder": "Entrez votre nom complet",
+      "email": "Adresse e-mail",
+      "emailPlaceholder": "Entrez votre adresse e-mail",
+      "subject": "Sujet",
+      "subjectPlaceholder": "De quoi s'agit-il ?",
+      "message": "Votre message",
+      "messagePlaceholder": "Parlez-moi de votre projet ou de votre question...",
+      "sendMessage": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "required": "*",
+      "nameRequired": "Le nom est requis",
+      "emailRequired": "L'e-mail est requis",
+      "emailInvalid": "Veuillez entrer une adresse e-mail valide",
+      "subjectRequired": "Le sujet est requis",
+      "messageRequired": "Le message est requis",
+      "messageMinLength": "Le message doit contenir au moins 10 caractères",
+      "successTitle": "Merci ! Votre message a été envoyé avec succès.",
+      "errorTitle": "Désolé, une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer."
+    },
+    "info": {
+      "getInTouch": "Entrer en contact",
+      "description": "Je suis toujours ouvert à discuter de nouveaux projets, d'idées créatives ou d'opportunités de faire partie de vos visions. Basé à Brême, Allemagne, mais disponible pour le travail à distance dans le monde entier.",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "location": "Localisation",
+      "linkedin": "LinkedIn",
+      "followMe": "Suivez-moi"
+    },
+    "map": {
+      "title": "Trouvez-moi ici",
+      "locationTitle": "Brême, Allemagne",
+      "locationAddress": "Ansbacher Straße 38, 28215 Brême",
+      "timezoneTitle": "Fuseau horaire",
+      "timezoneValue": "GMT+1 (CET/CEST)"
+    }
+  },
+  "footer": {
+    "brand": {
+      "name": "Soufiane Hammagi",
+      "title": "Développeur Full-Stack & Ingénieur Logiciel"
+    },
+    "quickLinks": "Liens rapides",
+    "contactInfo": "Informations de contact",
+    "followMe": "Suivez-moi",
+    "copyright": "Tous droits réservés. • Créé avec React et beaucoup de",
+    "coffee": "☕"
+  },
+  "languageSwitcher": {
+    "selectLanguage": "Sélectionner la langue"
+  },
+  "resumeData": {
+    "meta": {
+      "source": "SoufianeHammagiResume (2).pdf",
+      "generated_on": "2025-10-20"
+    },
+    "experience": [
+      {
+        "title": "Formation en développement d’applications",
+        "company": "EPhilos AG",
+        "location": "Brême, Allemagne",
+        "start": "2023-08",
+        "end": "2026-07",
+        "highlights": [
+          "Adaptation, extension et mise en œuvre de solutions logicielles pour les clients dans l'environnement de la gamme de produits ComfortMarket avec PHP et JavaScript",
+          "Développement et personnalisation de solutions logicielles avec PHP et JavaScript",
+          "Travail avec MySQL et les systèmes de gestion de bases de données",
+          "Développement front-end avec ExtJS, HTML et CSS",
+          "Installation et administration d’environnements applicatifs",
+          "Analyse des fichiers journaux et résolution des erreurs techniques",
+          "Mise en œuvre de tests automatisés pour l’assurance qualité",
+          "Rédaction de documentation technique"
+        ]
+      },
+      {
+        "title": "Stage en développement logiciel",
+        "company": "DevSolTech",
+        "location": "Agadir, Maroc",
+        "start": "2021-11",
+        "end": "2022-01",
+        "highlights": [
+          "Conception et maintenance de systèmes logiciels",
+          "Présentation réussie de 5 nouvelles fonctionnalités aux parties prenantes internes et aux décideurs"
+        ]
+      },
+      {
+        "title": "Stage en développement logiciel",
+        "company": "Unirsone",
+        "location": "Ait Melloul, Maroc",
+        "start": "2021-01",
+        "end": "2021-05",
+        "highlights": [
+          "Développement d’une application de bureau pour la gestion des stocks avec SQL Server, C# et Entity Framework"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "Licence en sciences et techniques informatiques",
+        "institution": "Faculté des sciences naturelles et de l’ingénierie",
+        "location": "Settat, Maroc",
+        "start": "2021-10",
+        "end": "2022-07",
+        "details": "Spécialisation : développement logiciel (Java/J2EE); Mention : très bien"
+      },
+      {
+        "degree": "Diplôme de technicien spécialisé en développement d’applications",
+        "institution": "Institut de formation technique",
+        "location": "Agadir, Maroc",
+        "start": "2019-09",
+        "end": "2021-07",
+        "details": "Diplôme d’État en développement informatique; Spécialisation : développement logiciel; Mention : bien"
+      },
+      {
+        "degree": "Études en sciences mathématiques et applications",
+        "institution": "Faculté Ibn Zohr (Université)",
+        "location": "Agadir, Maroc",
+        "start": "2014-10",
+        "end": "2019-06",
+        "details": "Modules pertinents : analyse, algèbre linéaire, mathématiques numériques, statistiques"
+      },
+      {
+        "degree": "Baccalauréat en physique",
+        "institution": "Lycée Moulay Youssef",
+        "location": "Ouled Berhil, Maroc",
+        "start": "2013-09",
+        "end": "2014-07",
+        "details": "Mention : bien"
+      }
+    ],
+    "languages": [
+      { "name": "Arabe", "level": "Langue maternelle" },
+      { "name": "Allemand", "level": "Avancé" },
+      { "name": "Anglais", "level": "Courant" },
+      { "name": "Français", "level": "Courant" },
+      { "name": "Espagnol", "level": "Notions de base" }
+    ],
+    "skills": {
+      "programming_languages": ["PHP", "JavaScript", "TypeScript", "C#", "Python"],
+      "frontend": ["React", "ExtJS", "Angular", "HTML", "CSS", "Next.js", "Webix", "Tailwind"],
+      "backend": ["Laravel", "Symfony", "Flask", "Jinja"],
+      "databases": ["MySQL", "SQL Server"],
+      "tools": ["Docker", "Git", "GitHub", "SVN", "OpenAI", "VSCode", "Cursor"],
+      "methods": ["Scrum"],
+      "modeling": ["UML"]
+    }
+  }
+}
+

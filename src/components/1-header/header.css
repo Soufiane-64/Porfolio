@@ -11,16 +11,23 @@
   1 - Header Design
  =================== */
 header.flex {
+  position: sticky;
+  top: 0;
+  z-index: 50;
   justify-content: space-between;
-  padding: 0 2.4rem;
-  margin-top: 1.2rem;
+  padding: 0.6rem 2.4rem;
+  margin-top: 0;
+  backdrop-filter: saturate(180%) blur(10px);
+  background: var(--bgHeader);
+  border-bottom: 1px solid var(--border);
 }
 
 header.flex nav {
-  background-color: var(--bgHeader);
-  padding: 0.77rem 1.6rem;
-  border-radius: 55px;
-  box-shadow: 1px 1px 40px #2323242a;
+  background: var(--bgHeader);
+  padding: 0.6rem 1.2rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  border: 1px solid var(--border);
 }
 
 header ul.flex {
@@ -30,14 +37,19 @@ header ul.flex {
 header ul li a {
   color: var(--title);
   opacity: 0.9;
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  transition: background-color .2s ease, color .2s ease, transform .2s ease;
 }
 
 header ul li a:hover {
   color: var(--blue);
+  background: rgba(93,188,252,0.08);
   opacity: 1;
-  font-size: 0.9rem;
+  transform: translateY(-1px);
 }
 
 header button {
@@ -46,6 +58,11 @@ header button {
 
 header button.menu {
   display: none;
+}
+
+.header-actions {
+  gap: 1rem;
+  align-items: center;
 }
 
 /*==================
@@ -57,18 +74,19 @@ header .icon-button {
   align-items: center;
   text-align: center;
   display: flex;
-  border-radius: 50%;
-  height: 2.4rem;
-  width: 2.4rem;
+  border-radius: 12px;
+  height: 2.2rem;
+  width: 2.2rem;
   color: var(--subtitle);
-  border: 1px solid rgba(244, 165, 96, 0.249);
-  transition: 0.2s ease;
+  border: 1px solid var(--border);
+  transition: 0.2s ease, transform .2s ease;
   font-size: 1.2rem;
 }
 
 header .icon-button:hover {
   color: var(--title);
-  border: 1px solid rgb(244, 165, 96);
+  border: 1px solid var(--blue);
+  transform: translateY(-1px);
   cursor: pointer;
 }
 
@@ -155,5 +173,9 @@ header .fixed ul.modal li a {
 
   header button.menu {
     display: block;
+  }
+
+  .header-actions .language-switcher {
+    display: none;
   }
 }

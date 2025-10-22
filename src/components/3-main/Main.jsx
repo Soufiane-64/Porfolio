@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './main.css';
 import TechCarousel from '../TechCarousel/TechCarousel';
 import { extractTechnologiesFromRepos, getTechnologyInfo } from '../../utils/technologyMapping';
 
 const Main = () => {
+  const { t } = useTranslation();
   const [currentActive, setcurrentActive] = useState('all');
   const [repos, setRepos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -119,7 +121,7 @@ const Main = () => {
             }}
             className={currentActive === 'all' ? 'active' : null}
           >
-            all projects
+            {t('projects.allProjects')}
           </button>
           <button
             onClick={() => {
@@ -127,7 +129,7 @@ const Main = () => {
             }}
             className={currentActive === 'css' ? 'active' : null}
           >
-            HTML & CSS
+            {t('projects.htmlCss')}
           </button>
           <button
             onClick={() => {
@@ -135,7 +137,7 @@ const Main = () => {
             }}
             className={currentActive === 'js' ? 'active' : null}
           >
-            JavaScript
+            {t('projects.javascript')}
           </button>
           <button
             onClick={() => {
@@ -143,7 +145,7 @@ const Main = () => {
             }}
             className={currentActive === 'react' ? 'active' : null}
           >
-            React
+            {t('projects.react')}
           </button>
           <button
             onClick={() => {
@@ -151,7 +153,7 @@ const Main = () => {
             }}
             className={currentActive === 'php' ? 'active' : null}
           >
-            PHP
+            {t('projects.php')}
           </button>
           <button
             onClick={() => {
@@ -159,7 +161,7 @@ const Main = () => {
             }}
             className={currentActive === 'python' ? 'active' : null}
           >
-            Python
+            {t('projects.python')}
           </button>
           <button
             onClick={() => {
@@ -167,7 +169,7 @@ const Main = () => {
             }}
             className={currentActive === 'java' ? 'active' : null}
           >
-            Java
+            {t('projects.java')}
           </button>
         </section>
         <section className="flex right-section">
@@ -185,14 +187,14 @@ const Main = () => {
                   />
                 </div>
                 <div style={{ width: '266px' }} className="box">
-                  <h1 className="title">Loading...</h1>
-                  <p className="sub-title">Fetching repositories</p>
+                  <h1 className="title">{t('projects.loading')}</h1>
+                  <p className="sub-title">{t('projects.fetchingRepos')}</p>
                   <div className="card-footer flex space-between">
                     <div className="icon-group flex">
                       <i className="fa-solid fa-link icon" />
                       <i className="fa-brands fa-github icon" />
                     </div>
-                    <span className="more-link flex">more<i style={{ alignSelf: 'end' }} className="fa-solid fa-arrow-right icon" /></span>
+                    <span className="more-link flex">{t('projects.more')}<i style={{ alignSelf: 'end' }} className="fa-solid fa-arrow-right icon" /></span>
                   </div>
                 </div>
               </article>
@@ -202,7 +204,7 @@ const Main = () => {
           {!isLoading && error && (
             <article className="card" style={{ padding: '1rem' }}>
               <div className="box" style={{ width: '266px' }}>
-                <h1 className="title">Error</h1>
+                <h1 className="title">{t('projects.error')}</h1>
                 <p className="sub-title">{error}</p>
               </div>
             </article>
@@ -212,7 +214,7 @@ const Main = () => {
             const imgIndex = (index % 5) + 1;
             const homepage = repo.homepage && repo.homepage.trim().length > 0 ? repo.homepage : null;
             const repoUrl = repo.html_url;
-            const description = repo.description || 'No description provided.';
+            const description = repo.description || t('projects.noDescription');
             const title = repo.name;
             return (
               <article key={repo.id} className="card">
@@ -233,19 +235,19 @@ const Main = () => {
                   <div className="card-footer flex space-between">
                     <div className="icon-group flex">
                       {homepage ? (
-                        <a href={homepage} target="_blank" rel="noreferrer" title="Live site">
+                        <a href={homepage} target="_blank" rel="noreferrer" title={t('projects.livesite')}>
                           <i className="fa-solid fa-link icon" />
                         </a>
                       ) : (
-                        <i className="fa-solid fa-link icon" title="Live site" />
+                        <i className="fa-solid fa-link icon" title={t('projects.livesite')} />
                       )}
-                      <a href={repoUrl} target="_blank" rel="noreferrer" title="GitHub">
+                      <a href={repoUrl} target="_blank" rel="noreferrer" title={t('projects.github')}>
                         <i className="fa-brands fa-github icon" />
                       </a>
                     </div>
 
                     <a className="more-link flex" href={repoUrl} target="_blank" rel="noreferrer">
-                      more
+                      {t('projects.more')}
                       <i
                         style={{ alignSelf: 'end' }}
                         className="fa-solid fa-arrow-right icon"

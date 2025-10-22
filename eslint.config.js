@@ -89,7 +89,6 @@ export default [
       'brace-style': ['error', '1tbs', { allowSingleLine: true }],
       'no-trailing-spaces': 'error',
       'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
-      'linebreak-style': ['error', 'unix'],
       'max-len': ['warn', { code: 120, ignoreUrls: true, ignoreStrings: true }]
     }
   }

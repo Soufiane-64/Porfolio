@@ -1,10 +1,12 @@
 // ...existing code...
 import './hero.css';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import lottie from 'lottie-web';
 
 const Hero = () => {
+  const { t } = useTranslation();
   const rootRef = useRef(null);
   const cardRef = useRef(null);
   const blobsRef = useRef([]);
@@ -263,19 +265,16 @@ const Hero = () => {
         </div>
 
         <h1 className="title">
-          <span className="gradient-text">Web Developer</span> | Tech Enthusiast | Problem Solver
+          <span className="gradient-text">{t('hero.title')}</span>
         </h1>
 
         <p className="sub-title">
-          Hi, I’m Soufiane Hammagi, a passionate web developer based in Germany. I craft modern,
-          intuitive, and high-performance web applications with a focus on clean design and
-          seamless user experiences. With expertise in JavaScript, Python, and React, I bring ideas
-          to life through thoughtful code, scalable architecture, and a strong eye for detail.
+          {t('hero.description')}
         </p>
 
         <div className="controls flex">
-          <a className="btn primary" href="#projects" aria-label="See projects">See Projects</a>
-          <a className="btn outline" href="#contact" aria-label="Contact me">Contact Me</a>
+          <a className="btn primary" href="#projects" aria-label="See projects">{t('hero.viewProjects')}</a>
+          <a className="btn outline" href="/SoufianeHammagiResume.pdf" download aria-label="Download CV">{t('hero.downloadCV')}</a>
         </div>
 
         <div className="all-icons flex" role="navigation" aria-label="social links">

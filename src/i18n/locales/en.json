@@ -1,0 +1,206 @@
+{
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "resume": "Resume",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Soufiane Hammagi",
+    "title": "Full-Stack Developer & Software Engineer",
+    "description": "Passionate about creating elegant solutions to complex problems. Specialized in modern web technologies and cloud infrastructure.",
+    "viewProjects": "View My Projects",
+    "downloadCV": "Download CV",
+    "yearsExperience": "Years Experience",
+    "projectsCompleted": "Projects Completed",
+    "technologiesMastered": "Technologies Mastered"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A selection of my recent work and contributions",
+    "allProjects": "all projects",
+    "htmlCss": "HTML & CSS",
+    "javascript": "JavaScript",
+    "react": "React",
+    "php": "PHP",
+    "python": "Python",
+    "java": "Java",
+    "loading": "Loading...",
+    "fetchingRepos": "Fetching repositories",
+    "error": "Error",
+    "failedToLoad": "Failed to load repositories.",
+    "noDescription": "No description provided.",
+    "more": "more",
+    "livesite": "Live site",
+    "github": "GitHub"
+  },
+  "resume": {
+    "title": "Resume",
+    "subtitle": "My professional background, education, and skills",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "languages": "Languages",
+    "downloadResume": "Download Resume (PDF)",
+    "programmingLanguages": "Programming Languages",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Databases",
+    "tools": "Tools",
+    "methodsModeling": "Methods & Modeling"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "Feel free to reach out for more information. I'm always interested in new opportunities and collaborations.",
+    "form": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email address",
+      "subject": "Subject",
+      "subjectPlaceholder": "What's this about?",
+      "message": "Your Message",
+      "messagePlaceholder": "Tell me about your project or question...",
+      "sendMessage": "Send Message",
+      "sending": "Sending...",
+      "required": "*",
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "subjectRequired": "Subject is required",
+      "messageRequired": "Message is required",
+      "messageMinLength": "Message must be at least 10 characters long",
+      "successTitle": "Thank you! Your message has been sent successfully.",
+      "errorTitle": "Sorry, there was an error sending your message. Please try again."
+    },
+    "info": {
+      "getInTouch": "Get In Touch",
+      "description": "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Based in Bremen, Germany, but available for remote work worldwide.",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "linkedin": "LinkedIn",
+      "followMe": "Follow Me"
+    },
+    "map": {
+      "title": "Find Me Here",
+      "locationTitle": "Bremen, Germany",
+      "locationAddress": "Ansbacher Straße 38, 28215 Bremen",
+      "timezoneTitle": "Timezone",
+      "timezoneValue": "GMT+1 (CET/CEST)"
+    }
+  },
+  "footer": {
+    "brand": {
+      "name": "Soufiane Hammagi",
+      "title": "Full-Stack Developer & Software Engineer"
+    },
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact Info",
+    "followMe": "Follow Me",
+    "copyright": "All rights reserved. • Built with React & lots of",
+    "coffee": "☕"
+  },
+  "languageSwitcher": {
+    "selectLanguage": "Select Language"
+  },
+  "resumeData": {
+    "meta": {
+      "source": "SoufianeHammagiResume (2).pdf",
+      "generated_on": "2025-10-20"
+    },
+    "experience": [
+      {
+        "title": "Application Developer Apprenticeship",
+        "company": "EPhilos AG",
+        "location": "Bremen, Germany",
+        "start": "2023-08",
+        "end": "2026-07",
+        "highlights": [
+          "Customizing, extending, and implementing software solutions for clients in the ComfortMarket product environment using PHP and JavaScript",
+          "Developing and adapting software solutions with PHP and JavaScript",
+          "Working with MySQL and database management systems",
+          "Frontend development with ExtJS, HTML, and CSS",
+          "Installing and administering application environments",
+          "Analyzing log files and resolving technical errors",
+          "Implementing automated tests for quality assurance",
+          "Creating technical documentation"
+        ]
+      },
+      {
+        "title": "Software Developer Internship",
+        "company": "DevSolTech",
+        "location": "Agadir, Morocco",
+        "start": "2021-11",
+        "end": "2022-01",
+        "highlights": [
+          "Designing and maintaining software systems",
+          "Successfully presented 5 new features to internal stakeholders and decision-makers"
+        ]
+      },
+      {
+        "title": "Software Developer Internship",
+        "company": "Unirsone",
+        "location": "Ait Melloul, Morocco",
+        "start": "2021-01",
+        "end": "2021-05",
+        "highlights": [
+          "Developed a desktop inventory management application using SQL Server, C#, and Entity Framework"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor of Science in Computer Engineering",
+        "institution": "Faculty of Natural and Engineering Sciences",
+        "location": "Settat, Morocco",
+        "start": "2021-10",
+        "end": "2022-07",
+        "details": "Focus: Software Development (Java/J2EE); Grade: Very Good"
+      },
+      {
+        "degree": "Specialized Technician Diploma in Application Development",
+        "institution": "Technical Training Institute",
+        "location": "Agadir, Morocco",
+        "start": "2019-09",
+        "end": "2021-07",
+        "details": "State diploma in software development; Specialization: Software Development; Grade: Good"
+      },
+      {
+        "degree": "Studies in Mathematical Sciences and Applications",
+        "institution": "Ibn Zohr University",
+        "location": "Agadir, Morocco",
+        "start": "2014-10",
+        "end": "2019-06",
+        "details": "Relevant modules: Analysis, Linear Algebra, Numerical Mathematics, Statistics"
+      },
+      {
+        "degree": "Baccalaureate in Physics",
+        "institution": "Lycée Moulay Youssef",
+        "location": "Ouled Berhil, Morocco",
+        "start": "2013-09",
+        "end": "2014-07",
+        "details": "Grade: Good"
+      }
+    ],
+    "languages": [
+      { "name": "Arabic", "level": "Native language" },
+      { "name": "German", "level": "Advanced" },
+      { "name": "English", "level": "Fluent" },
+      { "name": "French", "level": "Fluent" },
+      { "name": "Spanish", "level": "Basic knowledge" }
+    ],
+    "skills": {
+      "programming_languages": ["PHP", "JavaScript", "TypeScript", "C#", "Python"],
+      "frontend": ["React", "ExtJS", "Angular", "HTML", "CSS", "Next.js", "Webix", "Tailwind"],
+      "backend": ["Laravel", "Symfony", "Flask", "Jinja"],
+      "databases": ["MySQL", "SQL Server"],
+      "tools": ["Docker", "Git", "GitHub", "SVN", "OpenAI", "VSCode", "Cursor"],
+      "methods": ["Scrum"],
+      "modeling": ["UML"]
+    }
+  }
+}
+

@@ -1,13 +1,15 @@
 import './footer.css';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' }
+    { name: t('header.about', { defaultValue: 'About' }), href: '#about' },
+    { name: t('header.projects'), href: '#projects' },
+    { name: t('header.resume'), href: '#resume' },
+    { name: t('header.contact'), href: '#contact' }
   ];
 
   const socialLinks = [
@@ -62,22 +64,13 @@ const Footer = () => {
         <div className="footer-main">
           <div className="footer-section">
             <div className="footer-brand">
-              <h3>Soufiane Hammagi</h3>
-              <p>Full-Stack Developer & Software Engineer</p>
-              <a
-                href="/SoufianeHammagiResume.pdf"
-                download="Soufiane_Hammagi_CV.pdf"
-                className="cv-download-btn"
-                title="Download CV"
-              >
-                <i className="fa-solid fa-download" />
-                Download CV
-              </a>
+              <h3>{t('footer.brand.name')}</h3>
+              <p>{t('footer.brand.title')}</p>
             </div>
           </div>
 
           <div className="footer-section">
-            <h4>Quick Links</h4>
+            <h4>{t('footer.quickLinks')}</h4>
             <ul className="footer-links">
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -88,7 +81,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-section">
-            <h4>Contact Info</h4>
+            <h4>{t('footer.contactInfo')}</h4>
             <div className="footer-contact">
               {contactInfo.map((info, index) => (
                 <div key={index} className="contact-item">
@@ -104,7 +97,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-section">
-            <h4>Follow Me</h4>
+            <h4>{t('footer.followMe')}</h4>
             <div className="footer-social">
               {socialLinks.map((social, index) => (
                 <a
@@ -127,7 +120,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-bottom-content">
             <div className="footer-copyright">
-              <p>© {currentYear} Soufiane Hammagi. All rights reserved. • Built with React & lots of ☕</p>
+              <p>© {currentYear} {t('footer.brand.name')}. {t('footer.copyright')} {t('footer.coffee')}</p>
             </div>
           </div>
         </div>

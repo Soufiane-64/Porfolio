@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import './header.css';
 
 const Header = () => {
+  const { t } = useTranslation();
   const [showModal, setshowModal] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
@@ -44,22 +47,24 @@ const Header = () => {
       {/* Nav Links */}
       <nav>
         <ul className="flex">
-          <li><a href="#about">About</a></li>
-          <li><a href="#articles">Articles</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="/speaking">Speaking</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#up">{t('header.home')}</a></li>
+          <li><a href="#projects">{t('header.projects')}</a></li>
+          <li><a href="#resume">{t('header.resume')}</a></li>
+          <li><a href="#contact">{t('header.contact')}</a></li>
         </ul>
       </nav>
 
-      {/* Dark Mode Toggle */}
-      <button
-        className="icon-button mode flex"
-        onClick={toggleTheme}
-        title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-      >
-        <i className={isDarkMode ? 'fa-solid fa-sun' : 'fa-solid fa-moon'} />
-      </button>
+      {/* Language Switcher & Dark Mode Toggle */}
+      <div className="header-actions flex">
+        <LanguageSwitcher />
+        <button
+          className="icon-button mode flex"
+          onClick={toggleTheme}
+          title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+        >
+          <i className={isDarkMode ? 'fa-solid fa-sun' : 'fa-solid fa-moon'} />
+        </button>
+      </div>
 
       {/* Modal Menu */}
       {showModal && (
@@ -73,11 +78,10 @@ const Header = () => {
                 <i className="fa-solid fa-xmark" />
               </button>
             </li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#articles">Articles</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="/speaking">Speaking</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#up" onClick={() => setshowModal(false)}>{t('header.home')}</a></li>
+            <li><a href="#projects" onClick={() => setshowModal(false)}>{t('header.projects')}</a></li>
+            <li><a href="#resume" onClick={() => setshowModal(false)}>{t('header.resume')}</a></li>
+            <li><a href="#contact" onClick={() => setshowModal(false)}>{t('header.contact')}</a></li>
           </ul>
         </div>
       )}
