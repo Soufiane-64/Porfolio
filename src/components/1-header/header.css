@@ -176,6 +176,6 @@ header .fixed ul.modal li a {
   }
 
   .header-actions .language-switcher {
-    display: none;
+    display: inline-flex;
   }
 }

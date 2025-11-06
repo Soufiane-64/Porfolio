@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import './TechCarousel.css';
@@ -6,6 +6,16 @@ import './TechCarousel.css';
 const buildIconCandidates = (name) => {
   const lower = String(name || '').toLowerCase();
   const c = [];
+  const isDark = typeof document !== 'undefined' && !document.documentElement.classList.contains('light');
+  if (isDark) {
+    if (/(^|\b)github(\b|$)/.test(lower)) c.push('https://cdn.simpleicons.org/github/FFFFFF');
+    if (/(^|\b)flask(\b|$)/.test(lower)) c.push('/icons/flask_white.png');
+    if (/(^|\b)symfony(\b|$)/.test(lower)) c.push('https://cdn.simpleicons.org/symfony/FFFFFF');
+    if (/(^|\b)jinja(\b|$)/.test(lower)) c.push('/icons/jinja_white.png');
+  } else {
+    if (/(^|\b)flask(\b|$)/.test(lower)) c.push('/icons/flask_black.png');
+    if (/(^|\b)jinja(\b|$)/.test(lower)) c.push('/icons/jinja_black.png');
+  }
   if (/(openai|chatgpt)/.test(lower)) c.push('https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg');
   if (/cursor/.test(lower)) c.push('/icons/cursor.jpg','/icons/cursor.png','/icons/cursor.svg','/icons/cursor.webp','https://raw.githubusercontent.com/getcursor/cursor/main/public/icon.png');
   if (/tailwind/.test(lower)) c.push('/icons/tailwind.svg','/icons/tailwind.png','/icons/tailwind.jpg','/icons/tailwind.webp','https://cdn.simpleicons.org/tailwindcss/38BDF8');
@@ -56,6 +66,20 @@ const buildIconCandidates = (name) => {
 
 const TechCarousel = () => {
   const { t } = useTranslation();
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof document === 'undefined') return true;
+    return !document.documentElement.classList.contains('light');
+  });
+  useEffect(() => {
+    const checkTheme = () => {
+      const v = typeof document !== 'undefined' && !document.documentElement.classList.contains('light');
+      setIsDarkMode(v);
+    };
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
   const resumeData = t('resumeData', { returnObjects: true }) || {};
   const technologies = useMemo(() => {
     const s = resumeData.skills || {};
@@ -196,7 +220,7 @@ const TechCarousel = () => {
 
   return (
     <div className="tech-carousel-container">
-      <div className="tech-carousel" ref={carouselRef}>
+      <div className="tech-carousel" ref={carouselRef} key={isDarkMode ? 'dark' : 'light'}>
         {createIconSet(0)}
         {createIconSet(1)}
         {createIconSet(2)}

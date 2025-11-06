@@ -1,8 +1,25 @@
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './resume.css';
+import GlobeLanguages from '../GlobeLanguages/GlobeLanguages';
 
 const Resume = () => {
   const { t, i18n } = useTranslation();
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof document === 'undefined') return true;
+    return !document.documentElement.classList.contains('light');
+  });
+
+  useEffect(() => {
+    const checkTheme = () => {
+      const v = typeof document !== 'undefined' && !document.documentElement.classList.contains('light');
+      setIsDarkMode(v);
+    };
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
   const resumeData = t('resumeData', { returnObjects: true });
 
   const formatDate = (dateString) => {
@@ -184,11 +201,30 @@ const Resume = () => {
               ];
               const unique = Array.from(new Map(toItems.map(n => [String(n).toLowerCase(), n])).values());
               return (
-                <div className="tech-grid" role="list">
+                <div className="tech-grid" role="list" key={isDarkMode ? 'dark' : 'light'}>
                   {unique.map((skill, idx) => {
                     const lower = String(skill || '').toLowerCase();
                     // Custom absolute URL candidates (non-devicon)
                     let absoluteCandidates = [];
+                    // Prefer white icons in dark mode for low-contrast logos
+                    if (isDarkMode) {
+                      if (/(^|\b)github(\b|$)/.test(lower)) {
+                        absoluteCandidates.push('https://cdn.simpleicons.org/github/FFFFFF');
+                      } else if (/(^|\b)flask(\b|$)/.test(lower)) {
+                        absoluteCandidates.push('/icons/flask_white.png');
+                      } else if (/(^|\b)symfony(\b|$)/.test(lower)) {
+                        absoluteCandidates.push('https://cdn.simpleicons.org/symfony/FFFFFF');
+                      } else if (/(^|\b)jinja(\b|$)/.test(lower)) {
+                        absoluteCandidates.push('/icons/jinja_white.png');
+                      }
+                    } else {
+                      // Light mode: prefer black variants for specific logos
+                      if (/(^|\b)flask(\b|$)/.test(lower)) {
+                        absoluteCandidates.push('/icons/flask_black.png');
+                      } else if (/(^|\b)jinja(\b|$)/.test(lower)) {
+                        absoluteCandidates.push('/icons/jinja_black.png');
+                      }
+                    }
                     if (/(openai|chatgpt)/.test(lower)) {
                       absoluteCandidates = [
                         'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg'
@@ -282,7 +318,9 @@ const Resume = () => {
                         '/icons/uml.svg'
                       ];
                     } else if (/(jinja)/.test(lower)) {
+                      // append non-white variants as fallbacks
                       absoluteCandidates = [
+                        ...absoluteCandidates,
                         '/icons/jinja.png',
                         '/icons/jinja.jpg',
                         '/icons/jinja.webp',
@@ -303,8 +341,6 @@ const Resume = () => {
                             className="tech-icon"
                             src={iconSrc}
                             alt={`${skill} logo`}
-                            width={56}
-                            height={56}
                             loading="lazy"
                             data-idx="0"
                             data-abs-candidates={absoluteCandidates.join(',')}
@@ -361,6 +397,9 @@ const Resume = () => {
                 );
               })}
             </div>
+
+            {/* World languages visualization */}
+            <GlobeLanguages />
 
             {/* Download Resume Button */}
             <div className="download-resume">

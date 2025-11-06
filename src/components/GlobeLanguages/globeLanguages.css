@@ -1,0 +1,23 @@
+.globe-languages-container {
+  margin-top: 1.25rem;
+}
+
+.globe-canvas-holder {
+  width: 100%;
+  height: 240px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  backdrop-filter: blur(4px);
+  box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .globe-canvas-holder {
+    height: 200px;
+  }
+}
+
+
+

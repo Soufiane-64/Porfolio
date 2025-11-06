@@ -132,15 +132,15 @@ const Contact = () => {
       color: '#0077B5'
     },
     {
-      icon: 'fa-brands fa-twitter',
-      label: 'Twitter',
-      url: '/twitter',
-      color: '#1DA1F2'
+      icon: 'fa-brands fa-x-twitter',
+      label: 'X',
+      url: 'https://x.com/SoufianeHammagi',
+      color: '#000000'
     },
     {
       icon: 'fa-brands fa-instagram',
       label: 'Instagram',
-      url: '/instagram',
+      url: 'https://www.instagram.com/soufiane.64/',
       color: '#E4405F'
     }
   ];

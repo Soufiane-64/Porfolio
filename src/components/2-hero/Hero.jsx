@@ -182,6 +182,12 @@ const Hero = () => {
           <a href="https://github.com/Soufiane-64" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="icon-link">
             <i className="fa-brands fa-github icon" />
           </a>
+          <a href="https://x.com/SoufianeHammagi" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="icon-link">
+            <i className="fa-brands fa-x-twitter icon" />
+          </a>
+          <a href="https://www.instagram.com/soufiane.64/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="icon-link">
+            <i className="fa-brands fa-instagram icon" />
+          </a>
         </div>
       </div>
 

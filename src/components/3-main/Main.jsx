@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './main.css';
 import TechCarousel from '../TechCarousel/TechCarousel';
-import { extractTechnologiesFromRepos, getTechnologyInfo } from '../../utils/technologyMapping';
 
 const Main = () => {
   const { t } = useTranslation();
@@ -98,21 +97,11 @@ const Main = () => {
 
   const projectsToRender = filteredRepos.length ? filteredRepos : [];
 
-  // Extract technologies from GitHub repositories
-  const technologies = useMemo(() => {
-    if (repos.length === 0) return [];
-
-    const techNames = extractTechnologiesFromRepos(repos);
-    return techNames.map(techName => getTechnologyInfo(techName));
-  }, [repos]);
+  // (Carousel reads technologies from i18n resume data internally)
 
   return (
     <>
-      <TechCarousel
-        technologies={technologies}
-        isLoading={isLoading}
-        error={error}
-      />
+      <TechCarousel />
       <main className="flex">
         <section className="flex left-section">
           <button
@@ -178,11 +167,11 @@ const Main = () => {
               <article key={`skeleton-${index}`} className="card">
                 <div
                   className="image-container"
-                  style={{ width: '266px', height: '200px', overflow: 'hidden' }}
+                  style={{ width: '266px', height: '200px', overflow: 'hidden', background: 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))' }}
                 >
                   <img
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.2 }}
-                    src={`./${(index % 5) + 1}.jpg`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left top', opacity: 0.0 }}
+                    src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
                     alt="loading"
                   />
                 </div>
@@ -211,11 +200,22 @@ const Main = () => {
           )}
 
           {!isLoading && !error && projectsToRender.map((repo, index) => {
-            const imgIndex = (index % 5) + 1;
             const homepage = repo.homepage && repo.homepage.trim().length > 0 ? repo.homepage : null;
             const repoUrl = repo.html_url;
             const description = repo.description || t('projects.noDescription');
             const title = repo.name;
+            const owner = (repo.owner && repo.owner.login) || 'Soufiane-64';
+            const fullName = repo.full_name || `${owner}/${title}`;
+            const token = encodeURIComponent(repo.pushed_at || repo.updated_at || String(repo.id || index));
+            const candidates = [
+              `https://opengraph.githubassets.com/${token}/${fullName}`,
+              `https://raw.githubusercontent.com/${owner}/${title}/main/screenshot.png`,
+              `https://raw.githubusercontent.com/${owner}/${title}/master/screenshot.png`,
+              `https://raw.githubusercontent.com/${owner}/${title}/main/preview.png`,
+              `https://raw.githubusercontent.com/${owner}/${title}/master/preview.png`,
+              `https://raw.githubusercontent.com/${owner}/${title}/main/docs/screenshot.png`,
+              `https://raw.githubusercontent.com/${owner}/${title}/master/docs/screenshot.png`
+            ];
             return (
               <article key={repo.id} className="card">
                 <div
@@ -223,9 +223,20 @@ const Main = () => {
                   style={{ width: '266px', height: '200px', overflow: 'hidden' }}
                 >
                   <img
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                    src={`./${imgIndex}.jpg`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left top' }}
+                    src={candidates[0]}
                     alt={title}
+                    data-idx="0"
+                    data-candidates={candidates.join(',')}
+                    onError={(e) => {
+                      const el = e.currentTarget;
+                      const list = (el.getAttribute('data-candidates') || '').split(',').filter(Boolean);
+                      const i = parseInt(el.getAttribute('data-idx') || '0', 10) + 1;
+                      if (i < list.length) {
+                        el.setAttribute('data-idx', String(i));
+                        el.src = list[i];
+                      }
+                    }}
                   />
                 </div>
                 <div style={{ width: '266px' }} className="box">
