@@ -1,12 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { gsap } from 'gsap';
+import { useTheme } from '../../contexts/ThemeContext';
 import './TechCarousel.css';
 
-const buildIconCandidates = (name) => {
+const buildIconCandidates = (name, isDark) => {
   const lower = String(name || '').toLowerCase();
   const c = [];
-  const isDark = typeof document !== 'undefined' && !document.documentElement.classList.contains('light');
   if (isDark) {
     if (/(^|\b)github(\b|$)/.test(lower)) c.push('https://cdn.simpleicons.org/github/FFFFFF');
     if (/(^|\b)flask(\b|$)/.test(lower)) c.push('/icons/flask_white.png');
@@ -66,20 +65,7 @@ const buildIconCandidates = (name) => {
 
 const TechCarousel = () => {
   const { t } = useTranslation();
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof document === 'undefined') return true;
-    return !document.documentElement.classList.contains('light');
-  });
-  useEffect(() => {
-    const checkTheme = () => {
-      const v = typeof document !== 'undefined' && !document.documentElement.classList.contains('light');
-      setIsDarkMode(v);
-    };
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    return () => observer.disconnect();
-  }, []);
+  const { isDarkMode } = useTheme();
   const resumeData = t('resumeData', { returnObjects: true }) || {};
   const technologies = useMemo(() => {
     const s = resumeData.skills || {};
@@ -95,87 +81,37 @@ const TechCarousel = () => {
     return Array.from(new Map(list.map(n => [String(n).toLowerCase(), n])).values());
   }, [resumeData]);
   const carouselRef = useRef(null);
-  const animationRef = useRef(null);
+  const rafRef = useRef(null);
+  const startRef = useRef(0);
 
-  const initializeAnimation = () => {
-    if (!carouselRef.current) return;
-
+  useEffect(() => {
+    if (technologies.length === 0 || !carouselRef.current) return;
     const carousel = carouselRef.current;
     const set = carousel.querySelector('.tech-icon-set');
     if (!set) return;
-    const totalWidth = set.scrollWidth + 48;
+    const segmentWidth = set.scrollWidth + 48;
+    const speed = 40;
 
-    // Create infinite scroll animation
-    animationRef.current = gsap.to(carousel, {
-      x: -totalWidth,
-      duration: totalWidth / 40, // 40 pixels per second
-      ease: 'none',
-      repeat: -1,
-      paused: false
-    });
-  };
-
-  useEffect(() => {
-    if (technologies.length > 0) {
-      initializeAnimation();
-    }
-
+    const tick = (timestamp) => {
+      if (!startRef.current) startRef.current = timestamp;
+      const elapsed = (timestamp - startRef.current) / 1000;
+      const x = -(elapsed * speed) % segmentWidth;
+      carousel.style.transform = `translate3d(${x}px, 0, 0)`;
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
     return () => {
-      // Cleanup animation on unmount
-      if (animationRef.current) {
-        animationRef.current.kill();
-      }
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, [technologies]);
 
-  const handleIconHover = (event, isHovering) => {
-    const icon = event.currentTarget;
-    const color = icon.dataset.color;
-
-    if (isHovering) {
-      // Pause the main animation
-      if (animationRef.current) {
-        animationRef.current.pause();
-      }
-
-      // Scale up and change color
-      gsap.to(icon, {
-        scale: 1.3,
-        color: color,
-        filter: `drop-shadow(0 4px 20px ${color}50)`,
-        duration: 0.3,
-        ease: 'power2.out'
-      });
-    } else {
-      // Resume the main animation
-      if (animationRef.current) {
-        animationRef.current.resume();
-      }
-
-      // Return to default state
-      gsap.to(icon, {
-        scale: 1,
-        color: '#64748b',
-        filter: 'none',
-        duration: 0.3,
-        ease: 'power2.out'
-      });
-    }
-  };
-
-  // Create multiple sets for seamless infinite loop
   const createIconSet = (setIndex) => (
     <div key={setIndex} className="tech-icon-set">
       {technologies.map((skill, index) => {
-        const candidates = buildIconCandidates(skill);
+        const candidates = buildIconCandidates(skill, isDarkMode);
         const first = candidates[0] || '';
         return (
-          <div
-            key={`${setIndex}-${index}`}
-            className="tech-icon"
-            onMouseEnter={(e) => handleIconHover(e, true)}
-            onMouseLeave={(e) => handleIconHover(e, false)}
-          >
+          <div key={`${setIndex}-${index}`} className="tech-icon">
             {first ? (
               <img
                 className="tech-icon-img"

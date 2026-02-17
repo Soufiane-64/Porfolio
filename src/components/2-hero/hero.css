@@ -242,6 +242,18 @@ section.hero .right-section {
   position: relative;
 }
 
+section.hero .right-section-3d {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+section.hero .hero-three-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* floating blob styles */
 .blob {
   position: absolute;

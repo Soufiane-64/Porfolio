@@ -1,36 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '../../contexts/ThemeContext';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import './header.css';
 
 const Header = () => {
   const { t } = useTranslation();
   const [showModal, setshowModal] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  // Load theme preference from localStorage on component mount
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === 'dark');
-      document.documentElement.classList.toggle('light', savedTheme === 'light');
-    } else {
-      // Default to dark mode
-      setIsDarkMode(true);
-      document.documentElement.classList.remove('light');
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-
-    // Save to localStorage
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-
-    // Toggle the light class on the document element
-    document.documentElement.classList.toggle('light', !newTheme);
-  };
+  const { isDarkMode, toggleTheme } = useTheme();
 
   return (
     <header className="flex">
@@ -58,11 +35,13 @@ const Header = () => {
       <div className="header-actions flex">
         <LanguageSwitcher />
         <button
+          type="button"
           className="icon-button mode flex"
           onClick={toggleTheme}
           title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
         >
-          <i className={isDarkMode ? 'fa-solid fa-sun' : 'fa-solid fa-moon'} />
+          <i className={isDarkMode ? 'fa-solid fa-sun' : 'fa-solid fa-moon'} aria-hidden />
         </button>
       </div>
 

@@ -1,25 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '../../contexts/ThemeContext';
 import './resume.css';
 import GlobeLanguages from '../GlobeLanguages/GlobeLanguages';
 
 const Resume = () => {
   const { t, i18n } = useTranslation();
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof document === 'undefined') return true;
-    return !document.documentElement.classList.contains('light');
-  });
-
-  useEffect(() => {
-    const checkTheme = () => {
-      const v = typeof document !== 'undefined' && !document.documentElement.classList.contains('light');
-      setIsDarkMode(v);
-    };
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    return () => observer.disconnect();
-  }, []);
+  const { isDarkMode } = useTheme();
   const resumeData = t('resumeData', { returnObjects: true });
 
   const formatDate = (dateString) => {

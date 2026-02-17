@@ -90,6 +90,15 @@ header .icon-button:hover {
   cursor: pointer;
 }
 
+header .icon-button.mode i {
+  transition: transform 0.25s ease;
+  will-change: transform;
+}
+
+header .icon-button.mode:hover i {
+  transform: rotate(15deg);
+}
+
 /*==================
   2.1 - Close Icon
 ====================*/
