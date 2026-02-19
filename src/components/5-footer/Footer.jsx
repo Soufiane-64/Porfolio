@@ -27,14 +27,14 @@ const Footer = () => {
     },
     {
       name: 'Twitter',
-      icon: 'fa-brands fa-twitter',
-      url: '/twitter',
+      icon: 'fa-brands fa-x-twitter',
+      url: 'https://x.com/SoufianeHammagi',
       color: '#1DA1F2'
     },
     {
       name: 'Instagram',
       icon: 'fa-brands fa-instagram',
-      url: '/instagram',
+      url: 'https://www.instagram.com/soufiane.64/',
       color: '#E4405F'
     }
   ];
@@ -87,7 +87,7 @@ const Footer = () => {
                 <div key={index} className="contact-item">
                   <i className={info.icon} />
                   {info.link ? (
-                    <a href={info.link}>{info.text}</a>
+                    <a href={info.link} rel="noopener noreferrer">{info.text}</a>
                   ) : (
                     <span>{info.text}</span>
                   )}

@@ -42,6 +42,7 @@ const LanguageSwitcher = () => {
   const toggle = () => setOpen(v => !v);
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
+    document.documentElement.lang = lng;
     setOpen(false);
   };
 

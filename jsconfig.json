@@ -4,17 +4,21 @@
         "jsx": "react-jsx",
         "baseUrl": "src",
         "resolveJsonModule": true,
+        "paths": {
+            "@/*": ["./src/*"]
+        },
         "lib": [
-            "es6",
+            "es2020",
             "dom",
-            "es2017"
-        ],
+            "dom.iterable"
+        ]
     },
     "include": [
         "src"
     ],
     "exclude": [
         "node_modules",
-        "build"
+        "build",
+        "dist"
     ]
 }

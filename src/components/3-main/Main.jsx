@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './main.css';
 import TechCarousel from '../TechCarousel/TechCarousel';
+import RepoImage from './RepoImage';
 
 const Main = () => {
   const { t } = useTranslation();
@@ -14,16 +15,32 @@ const Main = () => {
     let isMounted = true;
     const controller = new AbortController();
 
+    const CACHE_KEY = 'gh_repos_cache';
+    const CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+
     /**
-     * Fetch repositories from the GitHub API and update component state.
+     * Fetch repositories from the GitHub API with localStorage caching.
      * Uses an AbortController to cancel the request on unmount and guards
      * against state updates when the component is no longer mounted.
-     * @returns {Promise<void>} Resolves when loading completes.
      */
     async function loadRepos() {
       try {
         setIsLoading(true);
         setError('');
+
+        // Check localStorage cache first
+        const cached = localStorage.getItem(CACHE_KEY);
+        if (cached) {
+          const { data, timestamp } = JSON.parse(cached);
+          if (Date.now() - timestamp < CACHE_TTL) {
+            if (isMounted) {
+              setRepos(Array.isArray(data) ? data : []);
+              setIsLoading(false);
+            }
+            return;
+          }
+        }
+
         const response = await fetch(
           'https://api.github.com/users/Soufiane-64/repos?sort=updated&per_page=100',
           {
@@ -33,16 +50,36 @@ const Main = () => {
             signal: controller.signal
           }
         );
+
+        // Handle rate limiting
+        if (response.status === 403 || response.status === 429) {
+          // Try to serve cached data even if stale
+          if (cached) {
+            const { data } = JSON.parse(cached);
+            if (isMounted) setRepos(Array.isArray(data) ? data : []);
+            return;
+          }
+          throw new Error('GitHub API rate limit exceeded. Please try again later.');
+        }
+
         if (!response.ok) {
           throw new Error(`GitHub API error: ${response.status}`);
         }
         const data = await response.json();
         if (isMounted) {
           setRepos(Array.isArray(data) ? data : []);
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }));
         }
       } catch {
         if (isMounted) {
-          setError('Failed to load repositories.');
+          // Try stale cache as fallback
+          const cached = localStorage.getItem(CACHE_KEY);
+          if (cached) {
+            const { data } = JSON.parse(cached);
+            setRepos(Array.isArray(data) ? data : []);
+          } else {
+            setError('Failed to load repositories.');
+          }
         }
       } finally {
         if (isMounted) {
@@ -108,7 +145,7 @@ const Main = () => {
             onClick={() => {
               setcurrentActive('all');
             }}
-            className={currentActive === 'all' ? 'active' : null}
+            className={currentActive === 'all' ? 'active' : undefined}
           >
             {t('projects.allProjects')}
           </button>
@@ -116,7 +153,7 @@ const Main = () => {
             onClick={() => {
               setcurrentActive('css');
             }}
-            className={currentActive === 'css' ? 'active' : null}
+            className={currentActive === 'css' ? 'active' : undefined}
           >
             {t('projects.htmlCss')}
           </button>
@@ -124,7 +161,7 @@ const Main = () => {
             onClick={() => {
               setcurrentActive('js');
             }}
-            className={currentActive === 'js' ? 'active' : null}
+            className={currentActive === 'js' ? 'active' : undefined}
           >
             {t('projects.javascript')}
           </button>
@@ -132,7 +169,7 @@ const Main = () => {
             onClick={() => {
               setcurrentActive('react');
             }}
-            className={currentActive === 'react' ? 'active' : null}
+            className={currentActive === 'react' ? 'active' : undefined}
           >
             {t('projects.react')}
           </button>
@@ -140,7 +177,7 @@ const Main = () => {
             onClick={() => {
               setcurrentActive('php');
             }}
-            className={currentActive === 'php' ? 'active' : null}
+            className={currentActive === 'php' ? 'active' : undefined}
           >
             {t('projects.php')}
           </button>
@@ -148,7 +185,7 @@ const Main = () => {
             onClick={() => {
               setcurrentActive('python');
             }}
-            className={currentActive === 'python' ? 'active' : null}
+            className={currentActive === 'python' ? 'active' : undefined}
           >
             {t('projects.python')}
           </button>
@@ -156,7 +193,7 @@ const Main = () => {
             onClick={() => {
               setcurrentActive('java');
             }}
-            className={currentActive === 'java' ? 'active' : null}
+            className={currentActive === 'java' ? 'active' : undefined}
           >
             {t('projects.java')}
           </button>
@@ -204,40 +241,13 @@ const Main = () => {
             const repoUrl = repo.html_url;
             const description = repo.description || t('projects.noDescription');
             const title = repo.name;
-            const owner = (repo.owner && repo.owner.login) || 'Soufiane-64';
-            const fullName = repo.full_name || `${owner}/${title}`;
-            const token = encodeURIComponent(repo.pushed_at || repo.updated_at || String(repo.id || index));
-            const candidates = [
-              `https://opengraph.githubassets.com/${token}/${fullName}`,
-              `https://raw.githubusercontent.com/${owner}/${title}/main/screenshot.png`,
-              `https://raw.githubusercontent.com/${owner}/${title}/master/screenshot.png`,
-              `https://raw.githubusercontent.com/${owner}/${title}/main/preview.png`,
-              `https://raw.githubusercontent.com/${owner}/${title}/master/preview.png`,
-              `https://raw.githubusercontent.com/${owner}/${title}/main/docs/screenshot.png`,
-              `https://raw.githubusercontent.com/${owner}/${title}/master/docs/screenshot.png`
-            ];
             return (
               <article key={repo.id} className="card">
                 <div
                   className="image-container"
                   style={{ width: '266px', height: '200px', overflow: 'hidden' }}
                 >
-                  <img
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left top' }}
-                    src={candidates[0]}
-                    alt={title}
-                    data-idx="0"
-                    data-candidates={candidates.join(',')}
-                    onError={(e) => {
-                      const el = e.currentTarget;
-                      const list = (el.getAttribute('data-candidates') || '').split(',').filter(Boolean);
-                      const i = parseInt(el.getAttribute('data-idx') || '0', 10) + 1;
-                      if (i < list.length) {
-                        el.setAttribute('data-idx', String(i));
-                        el.src = list[i];
-                      }
-                    }}
-                  />
+                  <RepoImage repo={repo} index={index} />
                 </div>
                 <div style={{ width: '266px' }} className="box">
                   <h1 className="title">{title}</h1>
@@ -246,18 +256,18 @@ const Main = () => {
                   <div className="card-footer flex space-between">
                     <div className="icon-group flex">
                       {homepage ? (
-                        <a href={homepage} target="_blank" rel="noreferrer" title={t('projects.livesite')}>
+                        <a href={homepage} target="_blank" rel="noopener noreferrer" title={t('projects.livesite')}>
                           <i className="fa-solid fa-link icon" />
                         </a>
                       ) : (
                         <i className="fa-solid fa-link icon" title={t('projects.livesite')} />
                       )}
-                      <a href={repoUrl} target="_blank" rel="noreferrer" title={t('projects.github')}>
+                      <a href={repoUrl} target="_blank" rel="noopener noreferrer" title={t('projects.github')}>
                         <i className="fa-brands fa-github icon" />
                       </a>
                     </div>
 
-                    <a className="more-link flex" href={repoUrl} target="_blank" rel="noreferrer">
+                    <a className="more-link flex" href={repoUrl} target="_blank" rel="noopener noreferrer">
                       {t('projects.more')}
                       <i
                         style={{ alignSelf: 'end' }}

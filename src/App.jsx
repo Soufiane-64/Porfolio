@@ -4,6 +4,7 @@ import Main from './components/3-main/Main';
 import Resume from './components/3.5-resume/Resume';
 import Contact from './components/4-contact/Contact';
 import Footer from './components/5-footer/Footer';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 
 /**
  * The main App component that renders the application layout.
@@ -12,19 +13,36 @@ import Footer from './components/5-footer/Footer';
 function App() {
   return (
     <div id="up" className="container">
-      <Header />
-      <Hero />
+      <a href="#main-content" className="skip-link">Skip to content</a>
+      <ErrorBoundary>
+        <Header />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Hero />
+      </ErrorBoundary>
       <div id ="projects" className="divider" />
-      <Main />
+      <main id="main-content">
+        <ErrorBoundary>
+          <Main />
+        </ErrorBoundary>
+      </main>
       <div id ="resume" className="divider" />
-      <Resume />
+      <ErrorBoundary>
+        <Resume />
+      </ErrorBoundary>
       <div id ="contact" className="divider" />
-      <Contact />
+      <ErrorBoundary>
+        <Contact />
+      </ErrorBoundary>
       <div className="divider" />
       <Footer />
-      <a href="#up">
-        <button className="fa-solid fa-angle-up scroll2Top" />
-      </a>
+      <button
+        className="scroll2Top"
+        onClick={() => { document.getElementById('up')?.scrollIntoView({ behavior: 'smooth' }); }}
+        aria-label="Scroll to top"
+      >
+        <i className="fa-solid fa-angle-up" />
+      </button>
     </div>
   );
 }

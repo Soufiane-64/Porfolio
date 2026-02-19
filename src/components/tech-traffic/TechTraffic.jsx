@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import './tech-traffic.css';
 
@@ -18,6 +19,7 @@ const logos = [
 ];
 
 const TechTraffic = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef(null);
   const lanesRef = useRef([]);
 
@@ -108,7 +110,7 @@ const TechTraffic = () => {
 
   return (
     <section id="tech-traffic" className="tech-traffic single" ref={sectionRef} aria-label="Tools & Skills">
-      <h2 className="tt-title">Tools & Skills</h2>
+      <h2 className="tt-title">{t('techTraffic.title', { defaultValue: 'Tools & Skills' })}</h2>
       <div className="tt-container">
         {lanes.map((_, idx) => (
           <div

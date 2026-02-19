@@ -308,6 +308,7 @@ const Contact = () => {
               style={{ border: 0 }}
               allowFullScreen={true}
               loading="lazy"
+              sandbox="allow-scripts allow-same-origin"
               referrerPolicy="no-referrer-when-downgrade"
               title="Soufiane's Location Map"
             />

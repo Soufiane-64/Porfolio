@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode, lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
@@ -7,11 +7,12 @@ import './index.css';
 import i18n from './i18n/config';
 import App from './App.jsx';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import NotFound from './components/NotFound/NotFound.jsx';
+
+const NotFound = lazy(() => import('./components/NotFound/NotFound.jsx'));
 
 const router = createBrowserRouter([
   { path: '/', element: <App /> },
-  { path: '*', element: <NotFound /> }
+  { path: '*', element: <Suspense fallback={<div style={{ textAlign: 'center', padding: '4rem' }}>Loading…</div>}><NotFound /></Suspense> }
 ]);
 
 createRoot(document.getElementById('root')).render(

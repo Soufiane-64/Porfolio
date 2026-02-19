@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../contexts/ThemeContext';
+import { gsap } from 'gsap';
 import './TechCarousel.css';
 
 const buildIconCandidates = (name, isDark) => {

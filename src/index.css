@@ -1,25 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
 html {
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.1px;
-  box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
-
 *,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-* {
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Theme transition limited to main surfaces to avoid laggy full-page transitions */
+/* Theme transition limited to main surfaces */
 body,
 .container,
 header.flex,
@@ -55,7 +48,23 @@ header .icon-button {
 body {
   background-color: var(--primary);
   color: var(--title);
-  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Skip to content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 9999;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
 }
 
 .container {
@@ -89,20 +98,18 @@ a {
   align-items: center;
 }
 
-.border {
-  border: 2px solid red;
-}
-
-button {
+.btn-reset {
   all: unset;
-}
-
-button:hover {
   cursor: pointer;
 }
 
-button:active {
+.btn-reset:active {
   scale: 0.9;
+}
+
+.btn-reset:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
 }
 
 @media (max-width: 1000px) {
