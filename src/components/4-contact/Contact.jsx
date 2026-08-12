@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { contactInfo, socialLinks } from '../../constants/profile';
 import './contact.css';
 
 const Contact = () => {
@@ -90,60 +91,6 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
-
-  const contactInfo = [
-    {
-      icon: 'fa-solid fa-envelope',
-      label: 'Email',
-      value: 'hammagisoufiane@gmail.com',
-      link: 'mailto:hammagisoufiane@gmail.com'
-    },
-    {
-      icon: 'fa-solid fa-phone',
-      label: 'Phone',
-      value: '+49 176 2450 7804',
-      link: 'tel:+4917624507804'
-    },
-    {
-      icon: 'fa-solid fa-location-dot',
-      label: 'Location',
-      value: 'Bremen, Germany',
-      link: null
-    },
-    {
-      icon: 'fa-brands fa-linkedin',
-      label: 'LinkedIn',
-      value: 'linkedin.com/in/soufiane-hammagi',
-      link: 'https://linkedin.com/in/soufiane-hammagi'
-    }
-  ];
-
-  const socialLinks = [
-    {
-      icon: 'fa-brands fa-github',
-      label: 'GitHub',
-      url: 'https://github.com/Soufiane-64',
-      color: '#181717'
-    },
-    {
-      icon: 'fa-brands fa-linkedin',
-      label: 'LinkedIn',
-      url: 'https://linkedin.com/in/soufiane-hammagi',
-      color: '#0077B5'
-    },
-    {
-      icon: 'fa-brands fa-x-twitter',
-      label: 'X',
-      url: 'https://x.com/SoufianeHammagi',
-      color: '#000000'
-    },
-    {
-      icon: 'fa-brands fa-instagram',
-      label: 'Instagram',
-      url: 'https://www.instagram.com/soufiane.64/',
-      color: '#E4405F'
-    }
-  ];
 
   return (
     <section className="contact-us">
@@ -286,7 +233,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="social-icon"
                     data-color={social.color}
-                    title={social.label}
+                    title={social.name}
                   >
                     <i className={social.icon} />
                   </a>

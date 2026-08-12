@@ -30,8 +30,9 @@ class ErrorBoundary extends Component {
           color: 'var(--subtitle, #888)',
           background: 'var(--secondary, #1a1a1a)',
           borderRadius: '0.5rem',
-          margin: '1rem 0',
-        }}>
+          margin: '1rem 0'
+        }}
+        >
           <i className="fa-solid fa-triangle-exclamation" style={{ fontSize: '2rem', marginBottom: '0.5rem' }} />
           <p>Something went wrong loading this section.</p>
           <button

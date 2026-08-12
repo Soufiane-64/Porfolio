@@ -14,7 +14,7 @@ const LANG_COLORS = {
   ruby: ['#cc342d', '#a91401'],
   go: ['#00add8', '#007d9c'],
   rust: ['#dea584', '#b7410e'],
-  default: ['#6366f1', '#4338ca'],
+  default: ['#6366f1', '#4338ca']
 };
 
 /**
@@ -35,7 +35,7 @@ function buildCandidates(repo, index) {
     // 3 – Main-branch screenshot (convention some devs follow)
     `https://raw.githubusercontent.com/${owner}/${name}/main/screenshot.png`,
     // 4 – Master-branch screenshot
-    `https://raw.githubusercontent.com/${owner}/${name}/master/screenshot.png`,
+    `https://raw.githubusercontent.com/${owner}/${name}/master/screenshot.png`
   ];
 }
 
@@ -74,7 +74,7 @@ const RepoImage = ({ repo, index }) => {
           justifyContent: 'center',
           gap: '0.5rem',
           color: c1,
-          userSelect: 'none',
+          userSelect: 'none'
         }}
       >
         <i className="fa-brands fa-github" style={{ fontSize: '2.5rem', opacity: 0.5 }} />
@@ -84,7 +84,7 @@ const RepoImage = ({ repo, index }) => {
             fontWeight: 600,
             opacity: 0.7,
             textTransform: 'uppercase',
-            letterSpacing: '0.05em',
+            letterSpacing: '0.05em'
           }}
         >
           {repo.language || 'Repository'}
@@ -102,7 +102,7 @@ const RepoImage = ({ repo, index }) => {
         width: '100%',
         height: '100%',
         objectFit: 'cover',
-        objectPosition: 'left top',
+        objectPosition: 'left top'
       }}
       onError={handleError}
     />

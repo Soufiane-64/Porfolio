@@ -13,12 +13,12 @@ export function buildIconCandidates(name, isDark = true) {
   // ── Theme-aware overrides ──────────────────────────────────────
   if (isDark) {
     if (/(^|\b)github(\b|$)/.test(lower)) c.push('https://cdn.simpleicons.org/github/FFFFFF');
-    if (/(^|\b)flask(\b|$)/.test(lower)) c.push('/icons/flask_white.png');
+    if (/(^|\b)flask(\b|$)/.test(lower)) c.push('/icons/flask_white.webp');
     if (/(^|\b)symfony(\b|$)/.test(lower)) c.push('https://cdn.simpleicons.org/symfony/FFFFFF');
-    if (/(^|\b)jinja(\b|$)/.test(lower)) c.push('/icons/jinja_white.png');
+    if (/(^|\b)jinja(\b|$)/.test(lower)) c.push('/icons/jinja_white.webp');
   } else {
-    if (/(^|\b)flask(\b|$)/.test(lower)) c.push('/icons/flask_black.png');
-    if (/(^|\b)jinja(\b|$)/.test(lower)) c.push('/icons/jinja_black.png');
+    if (/(^|\b)flask(\b|$)/.test(lower)) c.push('/icons/flask_black.webp');
+    // No separate light-mode jinja asset exists; the default jinja icon below reads fine on light backgrounds.
   }
 
   // ── Absolute-URL candidates ────────────────────────────────────
@@ -33,21 +33,10 @@ export function buildIconCandidates(name, isDark = true) {
     c.push('/icons/tailwind.svg', '/icons/tailwind.png', '/icons/tailwind.jpg', '/icons/tailwind.webp',
       'https://cdn.simpleicons.org/tailwindcss/38BDF8');
 
-  if (/(^|\b)docker(\b|$)/.test(lower))
-    c.push('/icons/docker.svg', '/icons/docker.png', '/icons/docker.jpg', '/icons/docker.webp',
-      'https://cdn.simpleicons.org/docker/2496ED');
-
-  if (/^html(5)?$/.test(lower))
-    c.push('/icons/html.svg', '/icons/html.png', '/icons/html.jpg', '/icons/html.webp',
-      'https://cdn.simpleicons.org/html5/E34F26');
-
-  if (/^css(3)?$/.test(lower))
-    c.push('/icons/css.svg', '/icons/css.png', '/icons/css.jpg', '/icons/css.webp',
-      'https://cdn.simpleicons.org/css3/1572B6');
-
-  if (/(^|\b)angular(\b|$)/.test(lower))
-    c.push('/icons/angular.svg', '/icons/angular.png', '/icons/angular.jpg', '/icons/angular.webp',
-      'https://cdn.simpleicons.org/angular/DD0031');
+  // No local assets for docker/html/css/angular — the devicon CDN entries below
+  // (confirmed reachable) cover them; skipping straight to those avoids several
+  // guaranteed-404 requests per icon (no local file, and simpleicons.org doesn't
+  // serve a few of these slugs either).
 
   if (/(webix)/.test(lower))
     c.push('/icons/webix.png', '/icons/webix.jpg', '/icons/webix.webp', '/icons/webix.svg');
@@ -62,10 +51,10 @@ export function buildIconCandidates(name, isDark = true) {
     c.push('/icons/merise.png', '/icons/merise.jpg', '/icons/merise.webp', '/icons/merise.svg');
 
   if (/(uml)/.test(lower))
-    c.push('/icons/uml.png', '/icons/uml.jpg', '/icons/uml.webp', '/icons/uml.svg');
+    c.push('/icons/uml.webp', '/icons/uml.png', '/icons/uml.jpg', '/icons/uml.svg');
 
   if (/(jinja)/.test(lower))
-    c.push('/icons/jinja.png', '/icons/jinja.jpg', '/icons/jinja.webp', '/icons/jinja.svg');
+    c.push('/icons/jinja.webp', '/icons/jinja.png', '/icons/jinja.jpg', '/icons/jinja.svg');
 
   // ── Devicon CDN ────────────────────────────────────────────────
   const deviconMap = {
@@ -96,7 +85,7 @@ export function buildIconCandidates(name, isDark = true) {
     tailwind: 'tailwindcss/tailwindcss-plain',
     flask: 'flask/flask-original',
     jinja: 'jinja/jinja-original',
-    vscode: 'vscode/vscode-original',
+    vscode: 'vscode/vscode-original'
   };
 
   const di = deviconMap[lower];

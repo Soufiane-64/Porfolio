@@ -375,6 +375,17 @@
   gap: 1rem;
 }
 
+/* Reserve the globe's footprint up front so its lazy mount doesn't shift layout (CLS). */
+.globe-languages-anchor {
+  min-height: 240px;
+}
+
+@media (max-width: 600px) {
+  .globe-languages-anchor {
+    min-height: 200px;
+  }
+}
+
 .language-item {
   background: var(--primary);
   padding: 1rem 1.25rem;

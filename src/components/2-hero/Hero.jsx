@@ -20,7 +20,7 @@ const Hero = () => {
       duration: 2.4,
       ease: 'sine.inOut',
       yoyo: true,
-      repeat: -1,
+      repeat: -1
     });
     return () => anim.kill();
   }, []);
@@ -57,7 +57,7 @@ const Hero = () => {
         ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
-        stagger: { each: 0.18 },
+        stagger: { each: 0.18 }
       });
 
       // Blob float
@@ -69,7 +69,7 @@ const Hero = () => {
         ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
-        stagger: { each: 0.25 },
+        stagger: { each: 0.25 }
       });
 
       // Mouse parallax on blobs
@@ -108,14 +108,15 @@ const Hero = () => {
     };
   }, []);
 
-
   return (
     <section className="hero flex" ref={rootRef}>
       <div className="left-section">
         <div className="parent-avatar flex">
           <img
             ref={avatarRef}
-            src={isDarkMode ? './avatar_black.png' : './avatar_white.png'}
+            src={isDarkMode ? '/avatar_black.webp' : '/avatar_white.webp'}
+            width="160"
+            height="160"
             className="avatar"
             alt="Soufiane Hammagi — avatar"
           />

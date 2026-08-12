@@ -1,5 +1,6 @@
 import './footer.css';
 import { useTranslation } from 'react-i18next';
+import { contactInfo as sharedContactInfo, socialLinks } from '../../constants/profile';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -12,50 +13,9 @@ const Footer = () => {
     { name: t('header.contact'), href: '#contact' }
   ];
 
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      icon: 'fa-brands fa-github',
-      url: 'https://github.com/Soufiane-64',
-      color: '#181717'
-    },
-    {
-      name: 'LinkedIn',
-      icon: 'fa-brands fa-linkedin',
-      url: 'https://linkedin.com/in/soufiane-hammagi',
-      color: '#0077B5'
-    },
-    {
-      name: 'Twitter',
-      icon: 'fa-brands fa-x-twitter',
-      url: 'https://x.com/SoufianeHammagi',
-      color: '#1DA1F2'
-    },
-    {
-      name: 'Instagram',
-      icon: 'fa-brands fa-instagram',
-      url: 'https://www.instagram.com/soufiane.64/',
-      color: '#E4405F'
-    }
-  ];
-
-  const contactInfo = [
-    {
-      icon: 'fa-solid fa-envelope',
-      text: 'hammagisoufiane@gmail.com',
-      link: 'mailto:hammagisoufiane@gmail.com'
-    },
-    {
-      icon: 'fa-solid fa-phone',
-      text: '+49 176 2450 7804',
-      link: 'tel:+4917624507804'
-    },
-    {
-      icon: 'fa-solid fa-location-dot',
-      text: 'Bremen, Germany',
-      link: null
-    }
-  ];
+  const contactInfo = sharedContactInfo
+    .filter((info) => info.label !== 'LinkedIn')
+    .map((info) => ({ icon: info.icon, text: info.value, link: info.link }));
 
   return (
     <footer className="footer">
